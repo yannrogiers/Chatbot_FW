@@ -1,0 +1,16 @@
+.nav-wrapper{
+    background-color: white !important;
+    color: black !important;
+}
+
+a{
+    color: black !important;
+}
+
+a:visited{
+    color: black !important; 
+}
+
+.logo{
+    margin-top: 15%;;
+}

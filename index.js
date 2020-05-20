@@ -9,7 +9,7 @@ mongoose.connect(config.mongoURI, {useNewUrlParser: true});
 
 require('./models/Registration');
 require('./models/Demand');
-require('./models/Items')
+require('./models/sort_systems')
 
 app.use(bodyParser.json());
 

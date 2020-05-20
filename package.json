@@ -23,6 +23,7 @@
     "dialogflow-fulfillment": "^0.6.1",
     "eslint-cli": "^1.1.1",
     "express": "^4.17.1",
+    "materialize-css": "^1.0.0",
     "mongoose": "^5.9.14"
   },
   "devDependencies": {

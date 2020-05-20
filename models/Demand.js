@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const {Schema } = mongoose;
 
 const demandSchema = new Schema({
@@ -6,4 +6,4 @@ const demandSchema = new Schema({
     counter: {type: Number, default: 1}
 });
 
-mongoose.model('demand', demandSchema);
+mongoose.model('demand', demandSchema);*/

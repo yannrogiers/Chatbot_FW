@@ -5,7 +5,9 @@ import Cookies from 'universal-cookie';
 import { v4 as uuid } from 'uuid';
 import Card from './Card'
 import QuickReplies from './QuickReplies';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import 'materialize-css/dist/css/materialize.css'
+import './chatbot.css'
 
 
 //Cookies als eerste initializen, dit is geen deel van de DOM
@@ -15,6 +17,7 @@ class Chatbot extends Component {
 
     messagesEnd;
     talkInput;
+
     //adding state
     constructor(props) {
         //pass to parent component
@@ -44,7 +47,7 @@ class Chatbot extends Component {
 
     async df_text_query(text) {
         let says = {
-            speaks: 'me',
+            speaks: 'user',
             msg: {
                 text: {
                     text: text
@@ -63,7 +66,7 @@ class Chatbot extends Component {
                 };
                 this.setState({ messages: [...this.state.messages, says] });
             }
-        }catch(e){
+        } catch (e) {
             says = {
                 speaks: 'bot',
                 msg: {
@@ -74,26 +77,26 @@ class Chatbot extends Component {
             };
             this.setState({ messages: [...this.state.messages, says] });
             let me = this;
-            setTimeout(function(){
-                me.setState({showBot: false})
+            setTimeout(function () {
+                me.setState({ showBot: false })
             }, 2000);
         }
-        
+
     };
 
     async df_event_query(event) {
-        try{
+        try {
             const res = await axios.post('/api/df_event_query', { event, userID: cookies.get('userID') });
 
-        for (let msg of res.data.fulfillmentMessages) {
-            let says = {
-                speak: 'bot',
-                msg: msg
-            };
-            this.setState({ messages: [...this.state.messages, says] })
-        }
+            for (let msg of res.data.fulfillmentMessages) {
+                let says = {
+                    speak: 'bot',
+                    msg: msg
+                };
+                this.setState({ messages: [...this.state.messages, says] })
+            }
 
-        }catch(e){
+        } catch (e) {
             let says = {
                 speaks: 'bot',
                 msg: {
@@ -104,11 +107,11 @@ class Chatbot extends Component {
             };
             this.setState({ messages: [...this.state.messages, says] });
             let me = this;
-            setTimeout(function(){
-                me.setState({showBot: false})
+            setTimeout(function () {
+                me.setState({ showBot: false })
             }, 2000);
         }
-        
+
     };
 
     resolveAfterXSecondes(x) {
@@ -122,8 +125,9 @@ class Chatbot extends Component {
     async componentDidMount() {
         this.df_event_query('Welcome');
 
-        await this.resolveAfterXSecondes(2);
+
         if (window.location.pathname === '/shop' && !this.state.shopWelcomeSent) {
+            await this.resolveAfterXSecondes(2);
             this.df_event_query('WELCOME_SHOP');
             this.setState({ shopWelcomeSent: true, showBot: true });
         }
@@ -141,7 +145,7 @@ class Chatbot extends Component {
 
 
     componentDidUpdate() {
-        this.messagesEnd.scrollIntoView({ behaviour: "smooth" })
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" })
         if (this.talkInput) {
             this.talkInput.focus();
         }
@@ -239,16 +243,16 @@ class Chatbot extends Component {
     render() {
         if (this.state.showBot) {
             return (
-                <div style={{ height: 500, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
-                    <nav>
-                        <div className="nav-wrapper">
+                <div style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
+                    <nav className="chatbot-nav-color">
+                        <div className="nav">
                             <a href="/" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
                             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                                <li><a href="/" onClick={this.hide}>Close</a></li>
+                                <li><a href="#" onClick={this.hide}>Close</a></li>
                             </ul>
                         </div>
                     </nav>
-                    <div id="chatbot" style={{ height: 388, width: '100%', overflow: 'auto' }}>
+                    <div id="chatbot" style={{ minHeight: 348, maxHeight: 348, width: '100%', overflow: 'auto' }}>
                         {this.renderMessages(this.state.messages)}
                         <div ref={(el) => { this.messagesEnd = el; }}
                             style={{ float: 'left', clear: 'both' }}>
@@ -263,12 +267,12 @@ class Chatbot extends Component {
             )
         } else {
             return (
-                <div style={{ height: 40, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
-                    <nav>
-                        <div className="nav-wrapper">
+                <div style={{ minHeight: 40, maxHeight: 500, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
+                    <nav className="chatbot-nav-color">
+                        <div className="nav">
                             <a href="/" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
                             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                                <li><a href="/" onClick={this.show}>Show</a></li>
+                                <li><a href="#" onClick={this.show}>Show</a></li>
                             </ul>
                         </div>
                     </nav>
