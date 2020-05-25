@@ -22,28 +22,28 @@ export default class Landing extends Component {
             <div className="slider" options={{indicators:false}} >
                 <ul className="slides">
                     <li>
-                        <img src={SH_1} />
+                        <img src={SH_1} alt={SH_1}/>
                         <div className="caption center-align">
 
                             <h5 className="light grey-text text-lighten-3">Here's our small slogan.</h5>
                         </div>
                     </li>
                     <li>
-                        <img src={SH_2} />
+                        <img src={SH_2} alt={SH_1}/>
                         <div className="caption left-align">
 
                             <h5 className="light grey-text text-lighten-3">Here's our small slogan.</h5>
                         </div>
                     </li>
                     <li>
-                        <img src={SH_3} />
+                        <img src={SH_3} alt={SH_1}/>
                         <div className="caption right-align">
 
                             <h5 className="light grey-text text-lighten-3">Here's our small slogan.</h5>
                         </div>
                     </li>
                     <li>
-                        <img src={SH_4} />
+                        <img src={SH_4} alt={SH_1}/>
                         <div className="caption right-align">
 
                             <h5 className="light grey-text text-lighten-3">Here's our small slogan.</h5>

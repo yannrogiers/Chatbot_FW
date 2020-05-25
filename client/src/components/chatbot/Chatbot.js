@@ -35,7 +35,9 @@ class Chatbot extends Component {
             //set empty message array
             messages: [],
             showBot: true,
-            shopWelcomeSent: false
+            shopWelcomeSent: false,
+            clientToken: false,
+            regenerateToken: 0
         };
         //Zet cookie, eerste param is cookie naam, 2e param is value van de cookie, 3e param zijn opties (cookie accessible op alle pages)
         //Kijken of cookie reeds exist
@@ -248,7 +250,7 @@ class Chatbot extends Component {
                         <div className="nav">
                             <a href="/" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
                             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                                <li><a href="#" onClick={this.hide}>Close</a></li>
+                                <li><a href="/" onClick={this.hide}>Close</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -272,7 +274,7 @@ class Chatbot extends Component {
                         <div className="nav">
                             <a href="/" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
                             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                                <li><a href="#" onClick={this.show}>Show</a></li>
+                                <li><a href="/" onClick={this.show}>Show</a></li>
                             </ul>
                         </div>
                     </nav>

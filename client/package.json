@@ -10,6 +10,8 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "cookie": "^0.4.1",
+    "cors": "^2.8.5",
+    "is-empty": "^1.2.0",
     "materialize-css": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -17,7 +19,8 @@
     "react-scripts": "3.4.1",
     "universal": "^0.1.1",
     "universal-cookie": "^4.0.3",
-    "uuid": "^8.0.0"
+    "uuid": "^8.0.0",
+    "validator": "^13.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
