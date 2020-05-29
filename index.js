@@ -23,13 +23,11 @@ app.use(
         extended:false
     })
 )
-
-
-
 app.use('/Users', Users)
 
 require('./Routes/dialogFlowRoutes')(app);
 require('./Routes/fulFillmentRoutes')(app);
+require('./Routes/Users')(app);
 
 if (process.env.NODE_ENV === 'production') {
     //JS & CSS files
