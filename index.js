@@ -13,7 +13,7 @@ mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: t
 require('./models/Registration');
 require('./models/Demand');
 require('./models/Items')
-require('./models/User')
+require('./models/userModel')
 
 app.use(bodyParser.json());
 app.use(express.json());
@@ -27,7 +27,6 @@ app.use('/Users', Users)
 
 require('./Routes/dialogFlowRoutes')(app);
 require('./Routes/fulFillmentRoutes')(app);
-require('./Routes/Users')(app);
 
 if (process.env.NODE_ENV === 'production') {
     //JS & CSS files

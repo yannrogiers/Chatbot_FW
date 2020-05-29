@@ -7,7 +7,7 @@ const bcrypt = require ('bcryptjs');
 process.env.SECRET_KEY = 'secret'
 
 
-const User = require('../models/User')
+const User = require('../models/userModel')
 users.use(cors());
 
 users.post('/register', (req, res) => {
@@ -84,7 +84,7 @@ users.get('/profile', (req,res) => {
             if(user){
                 res.json(user)
             }else{
-                res.send("User does not exist")
+                res.send("User does not exsist")
             }
         })
         .catch(err => {
