@@ -11,10 +11,11 @@ app.use(
         extended:false
     })
 )
+const Users = require('./Routes/Users')
 app.use('/Users', Users)
 
 const config = require('./config/keys');
-const Users = require('./Routes/Users')
+
 
 
 
