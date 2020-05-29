@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './header.css'
-import image from './imgs/logowithtext.png'
+import image from './imgs/logo_white.png'
 
 //juiste nav kleur: 00a99d
 
@@ -42,13 +42,13 @@ class Header extends Component{
                 </li>
                 <li className="nav-item">
                     <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                        Logout
+                        Log out
                     </a>
                 </li>  
             </ul>
         )
         return(
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+            <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
                 <button className="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
@@ -60,10 +60,13 @@ class Header extends Component{
 
                 </button>
                 <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
-                    <ul className="navbar-nav">
-                        <Link to="/" className="nav-link">
-                            Home
-                        </Link>
+                    <ul className="nav-item">
+                    <Link to={'/'} className="brand-logo" style={{ top: "0.1%", paddingLeft: '1%' }}><img className="logo" src={image} alt={image} width="150px" />
+                            
+                            </Link>
+                    </ul>
+                    <ul className="navbar-nav ml-auto">
+                    
                     </ul>
                     {localStorage.usertoken ? userLink : loginRegLink}
                 </div>

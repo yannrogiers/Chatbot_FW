@@ -15,15 +15,7 @@ require('./models/Demand');
 require('./models/Items')
 require('./models/userModel')
 
-app.use(bodyParser.json());
-app.use(express.json());
-app.use(cors());
-app.use(
-    bodyParser.urlencoded({
-        extended:false
-    })
-)
-app.use('/Users', Users)
+
 
 require('./Routes/dialogFlowRoutes')(app);
 require('./Routes/fulFillmentRoutes')(app);
@@ -38,6 +30,16 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
+
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors());
+app.use(
+    bodyParser.urlencoded({
+        extended:false
+    })
+)
+app.use('/Users', Users)
 
 
 const PORT = process.env.PORT || 5000;
