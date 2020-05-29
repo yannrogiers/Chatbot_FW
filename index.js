@@ -1,12 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const authRoutes = require('./config/auth')
-
 const app = express();
+const mongoose = require('mongoose');
 
 const config = require('./config/keys');
-const mongoose = require('mongoose');
-mongoose.connect(config.mongoURI, { useNewUrlParser: true });
+const Users = require('./Routes/Users')
+
+mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 require('./models/Registration');
@@ -15,7 +16,16 @@ require('./models/Items')
 
 app.use(bodyParser.json());
 app.use(express.json());
-app.use('/api/auth', authRoutes);
+app.use(cors());
+app.use(
+    bodyParser.urlencoded({
+        extended:false
+    })
+)
+
+
+
+app.use('/Users', Users)
 
 require('./Routes/dialogFlowRoutes')(app);
 require('./Routes/fulFillmentRoutes')(app);

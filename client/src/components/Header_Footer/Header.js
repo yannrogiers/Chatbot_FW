@@ -1,62 +1,78 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React,{Component} from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import './header.css'
 import image from './imgs/logowithtext.png'
 
 //juiste nav kleur: 00a99d
 
-const Header = () => {
+class Header extends Component{
+    logOut(e){
+        e.preventDefault()
+        localStorage.removeItem('usertoken')
+        this.props.history.push('/')
+    }
 
-   const showNavigation = () => (
-        /*<nav>
-             <div className="nav-wrapper">
-                 <Link to={'/'} className="brand-logo" style={{ paddingLeft: "100px" }}><img className="logo" src={image} alt={image} width="150px" /></Link>
-                 <ul id="mobile-demo" className="sidenav" style={{ paddingRight: "100px" }}>
-                     <li><Link to={'/shop'}>Shop</Link></li>
-                     <li><Link to={'/about'}>About us</Link></li>
-                 </ul>
-             </div>
-         </nav>*/
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to={'/'} className="navbar-brand" ><img className="logo" src={image} alt={image} width="150px" /></Link>
-            <button className="navbar-toggler"
-                type="button" data-toggle="collapse"
-                data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02"
+    render() {
+        const loginRegLink = (
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <Link to="/login" className="nav-link">
+                        Login
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/register" className="nav-link">
+                        Register
+                    </Link>
+                </li>  
+            </ul>
+        )
+
+        const userLink = (
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <Link to="/profile" className="nav-link">
+                        User
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/shop" className="nav-link">
+                        Shop
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+                        Logout
+                    </a>
+                </li>  
+            </ul>
+        )
+        return(
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+                <button className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbar1"
+                aria-controls="navbar1"
                 aria-expanded="false"
                 aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
 
-                <span className="navbar-toggler-icon"></span>
-            </button>
+                </button>
+                <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
+                    <ul className="navbar-nav">
+                        <Link to="/" className="nav-link">
+                            Home
+                        </Link>
+                    </ul>
+                    {localStorage.usertoken ? userLink : loginRegLink}
+                </div>
+            </nav>
+        )
 
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <li className="nav-item">
-                        <Link to={'/shop'} className="nav-link" >Shop <span className="sr-only">(current)</span></Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to={'/about'} className="nav-link" href="#" tabIndex="-1" >About</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to={'/Signup'} className="nav-link" href="#" tabIndex="-1" >Sign up</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to={'/Signin'} className="nav-link" href="#" tabIndex="-1" >Sign in</Link>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    );
+        
+    }
 
-    //Render
-    return (
-        <header id="header">
-            { showNavigation()}
+}
 
-        </header>
-    );
-
-};
-
-
-export default Header
+export default withRouter(Header)
