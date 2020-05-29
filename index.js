@@ -13,6 +13,7 @@ mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: t
 require('./models/Registration');
 require('./models/Demand');
 require('./models/Items')
+require('./models/User')
 
 app.use(bodyParser.json());
 app.use(express.json());
