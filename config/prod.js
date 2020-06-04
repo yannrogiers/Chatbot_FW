@@ -5,7 +5,7 @@ module.exports = {
     googleClientEmail: process.env.GOOGLE_CLIENT_EMAIL,
     googlePrivateKey: JSON.parse(process.env.GOOGLE_PRIVATE_KEY),
     mongoURI: process.env.MONGO_URI,
-    jwtSecret: process.env.JWT_SECRET,
-    jwtExpire: process.env.JWT_EXPIRE
+    JWT_SECRET: process.env.JWT_SECRET || 'somethingsecret',
+    paypalId: process.env.PAYPAL_CLIENT_ID
 
 }

@@ -1,8 +1,11 @@
 const express = require('express');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
+const userRoute = require('./Routes/userRoute')
+const productRoute = require('./Routes/productRoute')
+const orderRoute = require('./Routes/orderRoute')
+
 
 if (process.env.NODE_ENV === 'production') {
     //JS & CSS files
@@ -16,22 +19,20 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(express.json());
-app.use(cors());
-app.use(
-    bodyParser.urlencoded({
-        extended:false
-    })
-)
-const Users = require('./Routes/Users')
-app.use('/Users', Users)
+app.use(bodyParser.json());
 
 const config = require('./config/keys');
 
+app.use('/api/users', userRoute)
+app.use('/api/products', productRoute)
+app.use('/api/orders', orderRoute)
+app.get('/api/config/paypal', (req, res) => {
+    res.send(config.PAYPAL_CLIENT_ID)
+})
 
 
 
-
-mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 
 require('./models/Registration');

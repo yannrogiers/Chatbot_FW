@@ -2,3 +2,16 @@ nav{
     z-index: 99999;
     background-color: white !important;
 }
+
+nav ul a{
+    color: rgba(255,255,255,.5) !important;
+    padding-right: .5rem !important;
+    padding-left: .5rem !important;
+    display: block !important;
+    padding: .5rem 1rem !important;
+    text-decoration: none !important;
+}
+
+/*Admin*/
+
+
