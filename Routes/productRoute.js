@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/productModel');
-const {isAdmin, isAuth} = require('../util');
+const { isAdmin, isAuth } = require('../util');
 
 
 
 router.get('/searchProducts', async (req, res) => {
-    const category = req.query.category ? {category: req.query.category} : {};
-    const searchKeyword = req.query.searchKeyword ?{
-        name:{
+    const category = req.query.category ? { category: req.query.category } : {};
+    const searchKeyword = req.query.searchKeyword ? {
+        name: {
             $regex: req.query.searchKeyword,
             $options: 'i'
         }
     } : {}
-    const sortOrder = req.query.sortOrder ? (req.query.sortOrder === 'lowest' ? {price: 1}:{price: -1})
-    :
-    {_id: -1}
-    const products = await Product.find({...category, ...searchKeyword}).sort(sortOrder);
+    const sortOrder = req.query.sortOrder ? (req.query.sortOrder === 'lowest' ? { price: 1 } : { price: -1 })
+        :
+        { _id: -1 }
+    const products = await Product.find({ ...category, ...searchKeyword }).sort(sortOrder);
     console.log(products)
     res.send(products);
 });
@@ -24,13 +24,13 @@ router.get('/searchProducts', async (req, res) => {
 router.get("/:id", async (req, res) => {
     const product = await Product.findOne({ _id: req.params.id });
     if (product) {
-      res.send(product);
+        res.send(product);
     } else {
-      res.status(404).send({ message: "Product Not Found." });
+        res.status(404).send({ message: "Product Not Found." });
     }
-  });
+});
 
-router.put('/:id', isAuth, isAdmin ,async (req, res) => {
+router.put('/:id', isAuth, isAdmin, async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findOne({ _id: productId })
     if (product) {
@@ -52,7 +52,7 @@ router.put('/:id', isAuth, isAdmin ,async (req, res) => {
 
 });
 
-router.post('/', isAuth, isAdmin,  async (req, res) => {
+router.post('/', isAuth, isAdmin, async (req, res) => {
     const product = new Product({
         name: req.body.name,
         image: req.body.image,
@@ -73,13 +73,13 @@ router.post('/', isAuth, isAdmin,  async (req, res) => {
 
 
 
-router.delete('/:id', isAuth, isAdmin,  async(req, res)=>{
+router.delete('/:id', isAuth, isAdmin, async (req, res) => {
     const deletedProduct = await Product.findById(req.params.id);
-    if(deletedProduct){
+    if (deletedProduct) {
         await deletedProduct.remove();
-        res.send({message: "Product has been deleted successfully"})
-    }else{
-    res.send("Error while trying to delete product")
+        res.send({ message: "Product has been deleted successfully" })
+    } else {
+        res.send("Error while trying to delete product")
     }
 });
 
