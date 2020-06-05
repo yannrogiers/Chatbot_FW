@@ -49,12 +49,12 @@ function CartComponent(props) {
 
                     :
                     cartItems.map(item => <div className="row test" key={qty}>
-                        <div className="col"><img src={item.image} /></div>
+                        <div className="col"><img src={item.image} width='150px' style={{marginRight: '5%'}} /></div>
                         <div className="col-2"> 
-                        <Link to={"/product/" + item.product}>{item.name}</Link>
+                        <Link to={"/products/" + item.product}>{item.name}</Link>
                         
                         </div>
-                        <div className="col-6"> Qty:
+                        <div className="col-4"> Qty:
                              <select className="select2" value={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>

@@ -4,25 +4,25 @@ import { Link } from 'react-router-dom'
 import '../shop/shop.css'
 import CheckoutSteps from './CheckoutSteps';
 import './placeorder.css'
-import {createOrder} from '../../actions/orderActions'
+import { createOrder } from '../../actions/orderActions'
 
 function PlaceOrder(props) {
 
     const cart = useSelector(state => state.cart);
     const orderCreate = useSelector(state => state.orderCreate);
-    const {loading, success, error, order} = orderCreate;
+    const { loading, success, error, order } = orderCreate;
 
     const { cartItems, shipping, payment } = cart;
-    if(!shipping.address){
+    if (!shipping.address) {
         props.history.push('/shipping')
     }
 
-    if(!payment.paymentMethod){
+    if (!payment.paymentMethod) {
         props.history.push('/payment')
     }
 
-    const itemsPrice = cartItems.reduce((a,c) => a + c.price*c.qty, 0);
-    const shippingPrice = itemsPrice > 100 ?0 : 10;
+    const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+    const shippingPrice = itemsPrice > 100 ? 0 : 10;
     const taxPrice = 0.21 * itemsPrice;
     const totalPrice = itemsPrice + shippingPrice + taxPrice;
 
@@ -31,18 +31,18 @@ function PlaceOrder(props) {
     const placeOrderHandler = () => {
         // create an order
         dispatch(createOrder({
-          orderItems: cartItems, shipping, payment, itemsPrice, shippingPrice,
-          taxPrice, totalPrice
+            orderItems: cartItems, shipping, payment, itemsPrice, shippingPrice,
+            taxPrice, totalPrice
         }));
-      }
+    }
 
 
-      useEffect(() => {
+    useEffect(() => {
         if (success) {
-          props.history.push("/order/" + order._id);
+            props.history.push("/order/" + order._id);
         }
-    
-      }, [success]);
+
+    }, [success]);
 
 
     return (
@@ -61,30 +61,31 @@ function PlaceOrder(props) {
                         </div>
                     </div>
                     <div>
-                        
+
                     </div>
-                    <div className="">
-                        <h4>Shopping Cart</h4>
-                        <div className="">
-                            {cartItems.length === 0 ?
-                                <div>Cart is empty</div>
 
-                                :
-                                cartItems.map(item => <div className="row test" key={shipping}>
-                                    <div className="col"><img src={item.image} /></div>
-                                    <div className="col-2">
-                                        <Link to={"/product/" + item.product}>{item.name}</Link>
+                    <h4>Shopping Cart</h4>
 
-                                    </div>
-                                    <div className="col-6"> Qty: {item.qty}
-                                    </div>
-                                    <div>price</div>
-                                    <div className="col col-lg-2">€ {item.price}</div>
-                                </div>
-                                )
-                            }
+                    {cartItems.length === 0 ?
+                        <div>Cart is empty</div>
+
+                        :
+                        cartItems.map(item => <div className="row test" key={shipping}>
+                            <div className="col">
+                                <Link to={"/products/" + item.product}>{item.name}</Link>
+
+                            </div>
+                            <div className="col"><img width='150px' src={item.image} /></div>
+
+                            <div className="col"> Qty: {item.qty}
+                            </div>
+                            <div>price</div>
+                            <div className="col">€ {item.price}</div>
                         </div>
-                    </div>
+                        )
+                    }
+
+
                 </div>
                 <div className="placeorder-action">
                     <div>

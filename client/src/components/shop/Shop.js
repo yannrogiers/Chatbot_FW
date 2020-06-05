@@ -16,6 +16,7 @@ function Shop(props) {
 
     useEffect(() => {
         dispatch(listProducts(category));
+        console.log(productList)
         return () => {
             //
         }
@@ -38,7 +39,6 @@ function Shop(props) {
         <div>
             {category &&
                 <h4>{category}</h4>}
-
             <div className="container breed">
                 <div className="row test">
                     <div className="row cat">Categories:</div>
@@ -71,7 +71,7 @@ function Shop(props) {
             <div className="row">
                 <div className="col">
                     <form onSubmit={submitHandler}>
-                        <input name="searchKeyword" onChange={(e) => setSearchKeyword(e.target.value)} />
+                        <input className="input-shop" name="searchKeyword" onChange={(e) => setSearchKeyword(e.target.value)} />
                         <button type="submit" className="btn btn-primary">Search</button>
                     </form>
                 </div>
@@ -85,7 +85,7 @@ function Shop(props) {
             </div>
 
 
-            {loading && productList && productList.length == 0 ? <div>Loading...</div> :
+            {loading ? <div>Loading...</div> :
                 error ? <div>{error}</div> :
                     <div>
                         <div className="container">
@@ -94,11 +94,11 @@ function Shop(props) {
 
                                     {
                                         products.map(product =>
-                                            <div className="col-2" key={product._id} >
+                                            <div className="col-2" >
                                                 <div className="product">
 
                                                     <div className="product name">
-                                                        <Link to={'/product/' + product._id}>
+                                                        <Link to={'/products/' + product._id}>
 
                                                             <img className="img-fluid" src={product.image} style={{ marginTop: 30 }} width="800px" />
                                                             {product.name}
