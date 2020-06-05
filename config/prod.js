@@ -6,6 +6,6 @@ module.exports = {
     googlePrivateKey: JSON.parse(process.env.GOOGLE_PRIVATE_KEY),
     mongoURI: 'mongodb+srv://yannrogiers:A602.11g*@finalworkcluster-mavxa.mongodb.net/chatbot?retryWrites=true&w=majority',
     JWT_SECRET: process.env.JWT_SECRET || 'somethingsecret',
-    paypalId: process.env.PAYPAL_CLIENT_ID
+    paypalId: 'AS2LGkNfGLIioBc8ZeLhBlImUYh7lsPveEJJ8SwG5v0klYv-zBDT03U6i4P2D0HvT_vBgLwBiR0LNVuj'
 
 }
