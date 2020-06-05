@@ -32,12 +32,13 @@ export default class extends Component {
             <Route path='/order/:id' component={OrderComplete}/>
             <Route exact path="/products/:id" component={ProductScreen}/>
             <Route exact path="/cart/:id?" component={CartComponent}/>
+            <Route exact path="/category/:id" component={Shop}/>
             <Route exact path="/signin" component={Signin}/>
             <Route exact path="/register" component={Signup}/>
             <Route exact path='/shipping' component={Shipping}/>
             <Route exact path="/payment" component={Payment}/>
             <Route path='/placeorder' component={PlaceOrder}/>
-            <Route  path='/orders' component={OrderList}/>
+            <Route path='/orders' component={OrderList}/>
             
             
             </div>

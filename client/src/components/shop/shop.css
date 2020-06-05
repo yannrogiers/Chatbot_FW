@@ -26,3 +26,43 @@
     opacity: 100% !important;
     pointer-events: all !important;
 }
+
+.container{
+    width: 100% !important;
+    margin: 5% !important;
+    margin-left: 11% !important;
+}
+
+.col-2{
+   margin-right: 3% !important;
+}
+
+.sort{
+    opacity: 100% !important;
+    pointer-events: all !important;
+    display: inline;
+    width: 50% !important;
+
+}
+
+input{
+    margin-left: 20% !important;
+    width: 50% !important;
+}
+
+.test{
+    margin-left: 20% !important;
+}
+
+.cat{
+    margin: 2% !important;
+}
+
+.catprod{
+    margin: 2% !important;
+
+}
+
+.breed{
+    margin: 0 auto !important;
+}

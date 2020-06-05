@@ -37,21 +37,22 @@ function ProductScreen(props) {
                             </div>
                             <div className="col-sm-4">
                                 <h4>{product.name}</h4>
-
+                                <b>Brand: </b>
                                 {product.brand}
                                 <br></br>
-                                <b> {product.price}</b>
+                                <b>Price: </b>€{product.price}
                                 <br></br>
-                    Description:
+                    <b>Description:</b>
+                    <br></br>
                     {product.description}
                             </div>
                         </div>
-                        <div className="row"> <b>Price: {product.price}</b></div>
+                        <div className="row"> <b>Price: </b>€{product.price}</div>
                         <div className="row">
                             <b> Status: {product.countInStock > 0 ? "In Stock" : ""}</b><br></br>
                         </div>
                         <div className="row">
-                            Qty: <select className="select" value={qty} onChange={(e) => { setQty(e.target.value) }}>
+                            Quantity: <select className="select" value={qty} onChange={(e) => { setQty(e.target.value) }}>
                                 {[...Array(product.countInStock).keys()].map(x =>
                                     <option key={x + 1} value={x + 1}>{x + 1}</option>
                                 )}
