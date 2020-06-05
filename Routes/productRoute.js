@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     {_id: -1}
     const products = await Product.find({...category, ...searchKeyword}).sort(sortOrder);
     console.log(products)
-    res.send(products);
+    res.json(products);
 });
 
 router.get("/:id", async (req, res) => {
