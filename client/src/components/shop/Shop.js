@@ -16,12 +16,11 @@ function Shop(props) {
 
     useEffect(() => {
         dispatch(listProducts(category));
-
-
         return () => {
             //
         }
     }, [category])
+    
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -33,6 +32,7 @@ function Shop(props) {
         dispatch(listProducts(category, searchKeyword, sortOrder))
     }
 
+    console.log(products)
 
     return (
         <div>
@@ -84,7 +84,7 @@ function Shop(props) {
             </div>
 
 
-            {loading ? <div>Loading...</div> :
+            {loading && productList && productList.length == 0 ? <div>Loading...</div> :
                 error ? <div>{error}</div> :
                     <div>
                         <div className="container">
