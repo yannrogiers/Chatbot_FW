@@ -5,7 +5,7 @@ const {isAdmin, isAuth} = require('../util');
 
 
 
-router.get('/', async (req, res) => {
+router.get('/searchProducts', async (req, res) => {
     const category = req.query.category ? {category: req.query.category} : {};
     const searchKeyword = req.query.searchKeyword ?{
         name:{
@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
     :
     {_id: -1}
     const products = await Product.find({...category, ...searchKeyword}).sort(sortOrder);
+    console.log(products);
     res.send(products);
 });
 
