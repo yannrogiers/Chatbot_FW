@@ -4,7 +4,7 @@ module.exports = {
     dialogFlowSessionLanguageCode: process.env.DIALOGFLOW_LANGUAGE_CODE,
     googleClientEmail: process.env.GOOGLE_CLIENT_EMAIL,
     googlePrivateKey: JSON.parse(process.env.GOOGLE_PRIVATE_KEY),
-    mongoURI: process.env.MONGO_URI,
+    mongoURI: 'mongodb+srv://yannrogiers:A602.11g*@finalworkcluster-mavxa.mongodb.net/chatbot?retryWrites=true&w=majority',
     JWT_SECRET: process.env.JWT_SECRET || 'somethingsecret',
     paypalId: process.env.PAYPAL_CLIENT_ID
 
