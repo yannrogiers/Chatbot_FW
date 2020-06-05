@@ -38,6 +38,7 @@ function Shop(props) {
         <div>
             {category &&
                 <h4>{category}</h4>}
+
             <div className="container breed">
                 <div className="row test">
                     <div className="row cat">Categories:</div>
@@ -93,11 +94,11 @@ function Shop(props) {
 
                                     {
                                         products.map(product =>
-                                            <div className="col-2" >
+                                            <div className="col-2" key={product._id} >
                                                 <div className="product">
 
                                                     <div className="product name">
-                                                        <Link to={'/products/' + product._id}>
+                                                        <Link to={'/product/' + product._id}>
 
                                                             <img className="img-fluid" src={product.image} style={{ marginTop: 30 }} width="800px" />
                                                             {product.name}

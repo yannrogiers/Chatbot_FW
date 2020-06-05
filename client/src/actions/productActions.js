@@ -20,14 +20,14 @@ const saveProduct = (product) => async (dispatch, getState) => {
         dispatch({ type: PRODUCT_SAVE_REQUEST, payload: product });
         const { userSignin: { userInfo } } = getState();
         if (!product._id) {
-            const { data } = await Axios.post('https://infinite-castle-02083.herokuapp.com/api/products', product, {
+            const { data } = await Axios.post('/api/products', product, {
                 headers: {
                     'Authorization': 'Bearer ' + userInfo.token
                 }
             });
             dispatch({ type: PRODUCT_SAVE_SUCCESS, payload: data });
         } else {
-            const { data } = await Axios.put('https://infinite-castle-02083.herokuapp.com/api/products/' + product._id, product, {
+            const { data } = await Axios.put('/api/products/' + product._id, product, {
                 headers: {
                     'Authorization': 'Bearer ' + userInfo.token
                 }
