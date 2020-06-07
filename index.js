@@ -1,41 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const mongoose = require('mongoose');
 const userRoute = require('./Routes/userRoute')
 const productRoute = require('./Routes/productRoute')
 const orderRoute = require('./Routes/orderRoute')
 
-
-
-
-app.use(express.json());
-app.use(bodyParser.json());
-
+//Config voor mongoose & heroku
 const config = require('./config/keys');
-
-app.use('/api/users', userRoute)
-app.use('/api/orders', orderRoute)
-app.use('/api/products', productRoute)
-app.get('/api/config/paypal', (req, res) => {
-    res.send(config.PAYPAL_CLIENT_ID)
-})
-
-
-
-mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-
-
-require('./models/Registration');
-require('./models/Demand');
-require('./models/Items')
-require('./models/userModel')
-
-app.use(bodyParser.json());
-
-
-require('./Routes/dialogFlowRoutes')(app);
-require('./Routes/fulFillmentRoutes')(app);
+const mongoose = require('mongoose');
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -49,7 +21,36 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
+//Mongoose connection
+mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
+
+
+//Models
+require('./models/Registration');
+require('./models/Demand');
+require('./models/sortOfSystemModel')
+require('./models/userModel')
+
+//Routes for chatbot
+require('./Routes/dialogFlowRoutes')(app);
+require('./Routes/fulFillmentRoutes')(app);
+
+//Middlewares
+app.use(express.json());
+app.use(bodyParser.json());
+
+//Api calls
+app.use('/api/users', userRoute)
+app.use('/api/orders', orderRoute)
+app.use('/api/products', productRoute)
+app.get('/api/config/paypal', (req, res) => {
+    res.send(config.PAYPAL_CLIENT_ID)
+});
+
+
+
+//Port for local dev
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
 
