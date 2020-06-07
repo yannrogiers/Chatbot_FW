@@ -10,6 +10,13 @@ const config = require('./config/keys');
 const mongoose = require('mongoose');
 
 
+//Middlewares
+app.use(express.json());
+app.use(bodyParser.json());
+
+//Mongoose connection
+mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
 if (process.env.NODE_ENV === 'production') {
     //JS & CSS files
     app.use(express.static('client/build'));
@@ -21,24 +28,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-//Mongoose connection
-mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
-
-
-//Models
-require('./models/Registration');
-require('./models/Demand');
-require('./models/sortOfSystemModel')
-require('./models/userModel')
-
-//Routes for chatbot
-require('./Routes/dialogFlowRoutes')(app);
-require('./Routes/fulFillmentRoutes')(app);
-
-//Middlewares
-app.use(express.json());
-app.use(bodyParser.json());
 
 //Api calls
 app.use('/api/users', userRoute)
@@ -46,11 +36,23 @@ app.use('/api/orders', orderRoute)
 app.use('/api/products', productRoute)
 app.get('/api/config/paypal', (req, res) => {
     res.send(config.PAYPAL_CLIENT_ID)
-});
+})
+
+//Models
+require('./models/Registration');
+require('./models/Demand');
+require('./models/sortOfSystemModel')
+require('./models/userModel')
+
+
+//Routes for chatbot
+require('./Routes/dialogFlowRoutes')(app);
+require('./Routes/fulFillmentRoutes')(app);
 
 
 
-//Port for local dev
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
 
