@@ -17,6 +17,14 @@ app.use(bodyParser.json());
 //Mongoose connection
 mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
+//Api calls
+app.use('/api/users', userRoute)
+app.use('/api/orders', orderRoute)
+app.use('/api/products', productRoute)
+app.get('/api/config/paypal', (req, res) => {
+    res.send(config.PAYPAL_CLIENT_ID)
+})
+
 if (process.env.NODE_ENV === 'production') {
     //JS & CSS files
     app.use(express.static('client/build'));
@@ -30,13 +38,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 
-//Api calls
-app.use('/api/users', userRoute)
-app.use('/api/orders', orderRoute)
-app.use('/api/products', productRoute)
-app.get('/api/config/paypal', (req, res) => {
-    res.send(config.PAYPAL_CLIENT_ID)
-})
+
 
 //Models
 require('./models/Registration');
