@@ -1,8 +1,10 @@
 import React from 'react';
-
+import './card.css'
 const Card = (props) => {
+
+
     return (
-        <div  style={{float: 'left', paddingRight:30, width:270}}>
+        <div className="big-card"  style={{float: 'left', paddingRight:30, width:300}}>
             <div className="card">
                 <div className="card-image" style={{width: 240}}>
                     <img alt={props.payload.fields.header.stringValue} src={props.payload.fields.image.stringValue} />
@@ -13,7 +15,7 @@ const Card = (props) => {
                     <p> <a  href="/">{props.payload.fields.price.stringValue}</a></p>
                 </div>
                 <div className="card-action">
-                    <a target="_blank" rel="noopener noreferrer" href={props.payload.fields.link.stringValue}>GET NOW</a>
+                    <a target="_blank"  rel="noopener noreferrer" href={props.payload.fields.link.stringValue}>VIEW IN SHOP</a>
                 </div>
             </div>
         </div>

@@ -1,5 +1,14 @@
-.slider .indicators .indicator-item.active{
-  background-color: #00a99d !important;
-  z-index: -99999;
+
+.img{
+  width: 100%;
+  height: 50%;
 }
 
+.image{
+  margin: 0 auto;
+}
+
+.container-fluid{
+  margin: 0 auto;
+  padding: 0 !important;  
+}

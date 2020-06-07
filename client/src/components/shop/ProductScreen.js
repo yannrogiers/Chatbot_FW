@@ -33,7 +33,7 @@ function ProductScreen(props) {
                     <div className="">
                         <div className="row">
                             <div className="col-sm-8">
-                                <img src={product.image} width="300px" style={{marginTop: '5%'}} className="img-fluid" />
+                                <img src={product.image} width="300px" style={{marginTop: '5%'}} alt="product" className="img-fluid" />
                             </div>
                             <div className="col-sm-4">
                                 <h4>{product.name}</h4>

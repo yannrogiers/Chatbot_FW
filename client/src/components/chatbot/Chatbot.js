@@ -147,7 +147,7 @@ class Chatbot extends Component {
 
 
     componentDidUpdate() {
-        this.messagesEnd.scrollIntoView({ behavior: "smooth" })
+        this.messagesEnd.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
         if (this.talkInput) {
             this.talkInput.focus();
         }
@@ -174,9 +174,7 @@ class Chatbot extends Component {
             case 'recommend_yes':
                 this.df_event_query('SHOW_RECOMMENDATIONS');
                 break;
-            case 'best_master':
-                this.df_event_query('MASTERSYSTEM');
-                break;
+            
             default:
                 this.df_text_query(text);
                 break;
@@ -198,10 +196,10 @@ class Chatbot extends Component {
             return <div key={i}>
                 <div className="card-panel grey lighten-5 z-depth-1">
                     <div style={{ overflow: 'hidden' }}>
-                        <a href="/" className="btn-floating btn-large waves-effect waves-light red">{message.speaks}</a>
+                        <a href="" className="btn-floating btn-large waves-effect waves-light red">{message.speaks}</a>
                     </div>
                     <div style={{ overflow: 'auto', overflowY: 'scroll' }}>
-                        <div style={{ height: 300, width: message.msg.payload.fields.cards.listValue.values.length * 270 }}>
+                        <div style={{ height: 300 }}>
                             {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
                         </div>
                     </div>
@@ -245,12 +243,12 @@ class Chatbot extends Component {
     render() {
         if (this.state.showBot) {
             return (
-                <div style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
+                <div className="chtbot" style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
-                        <div className="nav">
-                            <a href="/" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
-                            <ul id="nav-mobile" className="right hide-on-med-and-down">
-                                <li><a href="/" onClick={this.hide}>Close</a></li>
+                        <div className="">
+                            <a className="link-chatbot" href="" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
+                            <ul id="nav-mobile" className="">
+                                <li><a  className="close" onClick={this.hide}>Close</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -269,13 +267,13 @@ class Chatbot extends Component {
             )
         } else {
             return (
-                <div style={{ minHeight: 40, maxHeight: 500, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
+                <div style={{ minHeight: 40, maxHeight: 500, width: 400, maxWidth: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
-                        <div className="nav">
-                            <a href="/" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
-                            <ul id="nav-mobile" className="right hide-on-med-and-down">
-                                <li><a href="/" onClick={this.show}>Show</a></li>
-                            </ul>
+                        <div className="">
+                            <a className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
+                            <ul id="nav-mobile" className="">
+                                <li><a  className="close" onClick={this.show}>Show</a></li>
+                            </ul>        
                         </div>
                     </nav>
                     <div ref={(el) => { this.messagesEnd = el; }}

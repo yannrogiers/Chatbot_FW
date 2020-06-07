@@ -1,3 +1,18 @@
 .chatbot-nav-color{
     background-color: #00a99d !important;
 }
+
+.brand-logo{
+    text-decoration: none !important;
+}
+
+.close{
+    color: white !important;
+    font-weight: 100 !important;
+    margin-top: 10% !important;
+    opacity: 100% !important;
+}
+
+.chtbot{
+    background-color: #f0f0f0 !important
+}

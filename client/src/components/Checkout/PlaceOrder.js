@@ -23,7 +23,8 @@ function PlaceOrder(props) {
 
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const shippingPrice = itemsPrice > 100 ? 0 : 10;
-    const taxPrice = 0.21 * itemsPrice;
+    const taxPriceWithoutRounding = 0.21 * itemsPrice;
+    const taxPrice = Math.floor(taxPriceWithoutRounding);
     const totalPrice = itemsPrice + shippingPrice + taxPrice;
 
     const dispatch = useDispatch();

@@ -5,6 +5,7 @@ import SH_2 from './imgs/SH_2.jpeg'
 import SH_3 from './imgs/SH_3.jpeg'
 import SH_4 from './imgs/SH_4.jpeg'
 import './landing.css'
+import { Carousel } from 'react-bootstrap'
 
 
 
@@ -19,7 +20,11 @@ export default class Landing extends Component {
 
     render() {
         return (
-            <div>Home</div>
+
+            <div className="container-fluid">
+                <img className='img' src={SH_1} alt="homepage-1" />
+            </div>
+
         )
     }
 }

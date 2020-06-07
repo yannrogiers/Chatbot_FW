@@ -1,0 +1,15 @@
+.card-title{
+    background-color: white;
+    padding: 0 !important;
+    padding-left: 4% !important;
+    color: black !important
+}
+
+.btn-floating{
+text-decoration: none !important;
+}
+
+.btn-floating:hover{
+    text-decoration: none !important;
+    color: white
+}
