@@ -247,7 +247,7 @@ class Chatbot extends Component {
                     <nav className="chatbot-nav-color">
                         <div className="">
                             <a className="link-chatbot" href="" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
-                            <ul id="nav-mobile" className="">
+                            <ul id="nav-mobile" className="right hide-on-med-and-down">
                                 <li><a  className="close" onClick={this.hide}>Close</a></li>
                             </ul>
                         </div>
@@ -271,7 +271,7 @@ class Chatbot extends Component {
                     <nav className="chatbot-nav-color">
                         <div className="">
                             <a className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
-                            <ul id="nav-mobile" className="">
+                            <ul id="nav-mobile" className="right hide-on-med-and-down">
                                 <li><a  className="close" onClick={this.show}>Show</a></li>
                             </ul>        
                         </div>
