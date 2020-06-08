@@ -1,14 +1,43 @@
 
-.img{
-  width: 100%;
-  height: 50%;
+.imageClass{
+  width: 100% !important;
+  object-fit: cover !important;
+  height: 300px !important;
+}
+.imageClassBig{
+  width: 100% !important;
+  object-fit: cover !important;
+  height: 600px !important;
 }
 
 .image{
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 .container-fluid{
   margin: 0 auto;
   padding: 0 !important;  
+}
+
+.row{
+  margin-top: 1rem !important;
+}
+
+.half{
+  width: 100%;
+  height: 30rem;
+}
+
+.text{
+  color: white;
+}
+
+.lead{
+  font-weight: 400 !important;
+  text-shadow: 1px 1px 1px black;
+}
+
+.lead2{
+  font-weight: 400 !important;
+  font-size: 1.25rem;
 }

@@ -243,11 +243,11 @@ class Chatbot extends Component {
     render() {
         if (this.state.showBot) {
             return (
-                <div className="chtbot" style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
+                <div className="chtbot" style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'sticky', bottom: 0, left: '100%', border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
                         <div className="">
                             <a className="link-chatbot" href="" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
-                            <ul id="nav-mobile" className="right hide-on-med-and-down">
+                            <ul id="nav-mobile" className="bot">
                                 <li><a  className="close" onClick={this.hide}>Close</a></li>
                             </ul>
                         </div>
@@ -267,11 +267,11 @@ class Chatbot extends Component {
             )
         } else {
             return (
-                <div style={{ minHeight: 40, maxHeight: 500, width: 400, maxWidth: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
+                <div style={{ minHeight: 40, maxHeight: 500, width: 400, maxWidth: 400, position: 'sticky', bottom: 0, left: '100%', border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
                         <div className="">
-                            <a className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
-                            <ul id="nav-mobile" className="right hide-on-med-and-down">
+                            <a className="botTitle" style={{ marginLeft: '5%' }}>Security at Home</a>
+                            <ul id="nav-mobile" className="bot">
                                 <li><a  className="close" onClick={this.show}>Show</a></li>
                             </ul>        
                         </div>

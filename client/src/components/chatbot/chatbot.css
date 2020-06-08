@@ -1,9 +1,11 @@
 .chatbot-nav-color{
     background-color: #00a99d !important;
+    text-align: left;
 }
 
-.brand-logo{
+.botTitle{
     text-decoration: none !important;
+    float: left !important;
 }
 
 .close{
@@ -14,5 +16,11 @@
 }
 
 .chtbot{
-    background-color: #f0f0f0 !important
+    background-color: #f0f0f0 !important;
+    position: sticky;
+}
+
+.bot{
+    float: right;
+    text-align: left;
 }
