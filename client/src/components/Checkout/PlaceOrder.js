@@ -74,7 +74,7 @@ function PlaceOrder(props) {
                         cartItems.map(item => <div className="row test" key={shipping}>
                             <div className="col">
                                 <Link to={"/products/" + item.product}>{item.name}</Link>
-
+ 
                             </div>
                             <div className="col"><img width='150px' src={item.image} /></div>
 

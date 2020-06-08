@@ -51,32 +51,33 @@ function Order(props) {
                         <div>
 
                         </div>
-                        <div className="">
+                        <div className="row">
                             <h4>Shopping cart</h4>
-                            <div className="">
+                            <div className="row">
                                 {order.orderItems.length === 0 ?
                                     <div>Cart is empty</div>
 
                                     :
                                     order.orderItems.map(item => <div className="row test" key={order}>
-                                        <div className="col"><img src={item.image} /></div>
-                                        <div className="col-2">
+                                        <div className="col">
                                             <Link to={"/product/" + item.product}>{item.name}</Link>
 
                                         </div>
-                                        <div className="col-6"> Qty: {item.qty}
+                                        <div className="col-3"><img width="150px" src={item.image} /></div>
+                                        
+                                        <div className="col-3"> Qty: {item.qty}
                                         </div>
-                                        <div>price</div>
-                                        <div className="col col-lg-2">€ {item.price}</div>
+                                        <div>price:</div>
+                                        <div className="col-3">€ {item.price}</div>
                                     </div>
                                     )
                                 }
                             </div>
                         </div>
                     </div>
-                    <div className="placeorder-action">
+                    <div className="">
                         <div>
-                            <div className="placeorder-action-pay">
+                            <div className="">
                                 {!order.isPaid &&
                                     <PaypalButton
                                         amount={order.totalPrice}

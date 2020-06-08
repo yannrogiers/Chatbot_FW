@@ -47,7 +47,7 @@ router.post("/",isAuth, async (req, res) => {
       taxPrice: req.body.taxPrice,
       shippingPrice: req.body.shippingPrice,
       totalPrice: req.body.totalPrice,
-    });
+    }); 
     
     const OrderCreated = await newOrder.save();
     res.status(201).send({ message: "New Order Created", data: OrderCreated });
