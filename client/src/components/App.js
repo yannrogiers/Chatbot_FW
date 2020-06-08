@@ -15,6 +15,7 @@ import PlaceOrder from './Checkout/PlaceOrder';
 import OrderComplete from './Checkout/OrderComplete';
 import OrderList from './shop/OrderList';
 import UserComponent from './Auth/UserComponent';
+import About from './pages/About'
 
 
 export default class extends Component {
@@ -25,7 +26,7 @@ export default class extends Component {
             <Header/>
             <Route exact path="/" component={Landing}/>
             <div className="container">
-            
+            <Route exact path="/about" component={About}/>
             <Route exact path="/profile" component={UserComponent}/>
             <Route exact path="/products" component={ProductUpload}/>
             <Route exact path="/shop" component={Shop}/>

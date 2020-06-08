@@ -21,7 +21,7 @@ function Shop(props) {
             //
         }
     }, [category])
-    
+
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -75,7 +75,7 @@ function Shop(props) {
                         <button type="submit" className="btn btn-primary">Search</button>
                     </form>
                 </div>
-               
+
             </div>
 
 
@@ -101,6 +101,7 @@ function Shop(props) {
                                                     <div className="product brand"><b>Merk: </b>{product.brand}</div>
                                                     <div className="product price"><b>Prijs: </b>€{product.price}</div>
                                                 </div>
+                                                
                                             </div>
                                         )
                                     }

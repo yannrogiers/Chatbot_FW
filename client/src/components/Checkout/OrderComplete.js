@@ -9,15 +9,15 @@ import PaypalButton from './PaypalButton'
 function Order(props) {
 
     const orderPay = useSelector(state => state.orderPay);
-    const{loading: loadingPay, success: successPay, error: errorPay} = orderPay
+    const { loading: loadingPay, success: successPay, error: errorPay } = orderPay
     const dispatch = useDispatch();
     useEffect(() => {
-        if(successPay){
+        if (successPay) {
             props.history.push('/profile')
-        }else{
+        } else {
             dispatch(detailsOrder(props.match.params.id));
         }
-      
+
         return () => {
         }
     }, [successPay])
@@ -31,83 +31,84 @@ function Order(props) {
 
 
     return (
-        loading ? <div>Loading...</div> : error ? <div>{error}</div> :
-            <div>
-                <div className="placeorder">
-                    <div className="placeorder-info">
-                        <div>
-                            <h4>Shipping</h4>
-                            <div><b>Street and number:</b> {order.shipping.address}<br></br><b>City:</b>  {order.shipping.city} <br></br> <b>Postal code:</b> {order.shipping.postalCode} <br></br> <b>Country:</b> {order.shipping.country}</div>
-                        </div>
-                        <div>
-                            <b>{order.isDelivered ? 'Delivered at ' + order.deliveredAt : 'Not delivered.'}</b>
-                        </div>
-                        <div>
-                            <h4>Payment</h4>
+        loading ? <div className="">Loading...</div> : error ? <div className="">{error}</div> :
+            
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col">
                             <div>
-                                <b>{order.isPaid ? 'Paid at ' + order.paidAt : 'Not delivered.'}</b>
+                                <h4>Shipping</h4>
+                                <div><b>Street and number:</b> {order.shipping.address}<br></br><b>City:</b>  {order.shipping.city} <br></br> <b>Postal code:</b> {order.shipping.postalCode} <br></br> <b>Country:</b> {order.shipping.country}</div>
                             </div>
-                        </div>
-                        <div>
+                            <div>
+                                <b>{order.isDelivered ? 'Delivered at ' + order.deliveredAt : 'Not delivered.'}</b>
+                            </div>
+                            <div>
+                                <h4>Payment</h4>
+                                <div>
+                                    <b>{order.isPaid ? 'Paid at ' + order.paidAt : 'Not paid.'}</b>
+                                </div>
+                            </div>
+                            <div>
 
-                        </div>
-                        <div className="row">
-                            <h4>Shopping cart</h4>
+                            </div>
                             <div className="row">
-                                {order.orderItems.length === 0 ?
-                                    <div>Cart is empty</div>
+                                <h4>Shopping cart</h4>
+                                <div className="row">
+                                    {order.orderItems.length === 0 ?
+                                        <div>Cart is empty</div>
 
-                                    :
-                                    order.orderItems.map(item => <div className="row test" key={order}>
-                                        <div className="col">
-                                            <Link to={"/product/" + item.product}>{item.name}</Link>
+                                        :
+                                        order.orderItems.map(item => <div className="row test" key={order}>
+                                            <div className="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                                                <Link to={"/product/" + item.product}>{item.name}</Link>
 
+                                            </div>
+                                            <div className="col-lg-3 col-md-4 col-sm-8 col-xs-12"><img width="150px" src={item.image} /></div>
+
+                                            <div className="col-lg-3 col-md-4 col-sm-8 col-xs-12"> Qty: {item.qty}
+                                            </div>
+                                            <div>price:</div>
+                                            <div className="col-lg-3 col-md-4 col-sm-8 col-xs-12">€ {item.price}</div>
                                         </div>
-                                        <div className="col-3"><img width="150px" src={item.image} /></div>
-                                        
-                                        <div className="col-3"> Qty: {item.qty}
-                                        </div>
-                                        <div>price:</div>
-                                        <div className="col-3">€ {item.price}</div>
-                                    </div>
-                                    )
-                                }
+                                        )
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="">
-                        <div>
-                            <div className="">
-                                {!order.isPaid &&
-                                    <PaypalButton
-                                        amount={order.totalPrice}
-                                        onSuccess={handleSuccessPayment} />}
-                            </div>
+                        <div className="col">
                             <div>
-                                <h4>Order summary</h4>
+                                <div className="">
+                                    {!order.isPaid &&
+                                        <PaypalButton
+                                            amount={order.totalPrice}
+                                            onSuccess={handleSuccessPayment} />}
+                                </div>
+                                <div>
+                                    <h4>Order summary</h4>
+                                </div>
+                                <div>
+                                    <div><b>Items</b></div>
+                                    <div>€{order.itemsPrice}</div>
+                                </div>
+                                <div>
+                                    <div><b>Shipping</b></div>
+                                    <div>€{order.shippingPrice}</div>
+                                </div>
+                                <div>
+                                    <div><b>Tax</b></div>
+                                    <div>€{order.taxPrice}</div>
+                                </div>
+                                <div>
+                                    <div><b>Total</b></div>
+                                    <div>€{order.totalPrice}</div>
+                                </div>
                             </div>
-                            <div>
-                                <div>Items</div>
-                                <div>€{order.itemsPrice}</div>
-                            </div>
-                            <div>
-                                <div>Shipping</div>
-                                <div>€{order.shippingPrice}</div>
-                            </div>
-                            <div>
-                                <div>Tax</div>
-                                <div>€{order.taxPrice}</div>
-                            </div>
-                            <div>
-                                <div>Total</div>
-                                <div>€{order.totalPrice}</div>
-                            </div>
-                        </div>
 
+                        </div>
                     </div>
 
                 </div>
-            </div>
 
 
     )

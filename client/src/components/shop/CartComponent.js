@@ -36,12 +36,10 @@ function CartComponent(props) {
     return (
         <div>
             <div className="row">
-                <div className="col-sm-8">
+                <div className="col-sm-12">
                     <h4>Shopping Cart</h4>
                 </div>
-                <div className="col-sm-4">
-                    <h4>Price</h4>
-                </div>
+        
             </div>
             <div>
                 {cartItems.length === 0 ?
@@ -49,12 +47,12 @@ function CartComponent(props) {
 
                     :
                     cartItems.map(item => <div className="row test" key={item.price}>
-                        <div className="col"><img src={item.image} width='150px' style={{marginRight: '5%'}} /></div>
-                        <div className="col-2"> 
+                        <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12"><img src={item.image} width='150px' style={{marginRight: '5%'}} /></div>
+                        <div className="col-lg-2 col-md-4 col-sm-8 col-xs-12"> 
                         <Link to={"/products/" + item.product}>{item.name}</Link>
                         
                         </div>
-                        <div className="col-4"> Qty:
+                        <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12"> Qty:
                              <select className="select2" value={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -62,7 +60,7 @@ function CartComponent(props) {
                             </select>
                             <button type="button" onClick={() => removeFromCartHandler(item.product)} className="btn btn-danger">x</button>
                             </div>
-                        <div className="col col-lg-2">€ {item.price}</div>
+                        <div className="col-lg-2 col-md-12 col-sm-12 col-xs-12">Price: € {item.price}</div>
                     </div>
                     )
                 }

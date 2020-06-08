@@ -246,7 +246,7 @@ class Chatbot extends Component {
                 <div className="chtbot" style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'sticky', bottom: 0, float: 'right', border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
                         <div className="">
-                            <a className="link-chatbot" href="" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
+                            <p className="link-chatbot" href="" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</p>
                             <ul id="" className="bot">
                                 <li><a style={{opacity: '100% !important'}}  className="close" onClick={this.hide}>Close</a></li>
                             </ul>
@@ -270,7 +270,7 @@ class Chatbot extends Component {
                 <div style={{ minHeight: 40, maxHeight: 500, width: 400, maxWidth: 400, position: 'sticky', bottom: 0, float: 'right', border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
                         <div className="">
-                            <a className="botTitle" style={{ marginLeft: '5%' }}>Security at Home</a>
+                            <p className="botTitle" style={{ marginLeft: '5%' }}>Security at Home</p>
                             <ul id="nav-mobile" className="bot">
                                 <li><a  className="close" onClick={this.show}>Show</a></li>
                             </ul>        

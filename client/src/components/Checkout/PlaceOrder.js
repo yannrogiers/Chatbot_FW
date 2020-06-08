@@ -49,8 +49,8 @@ function PlaceOrder(props) {
     return (
         <div>
             <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
-            <div className="placeorder">
-                <div className="placeorder-info">
+            <div className="container-fluid">
+                <div className="col">
                     <div>
                         <h4>Shipping</h4>
                         <div><b>Street and number:</b> {cart.shipping.address}<br></br><b>City:</b>  {cart.shipping.city} <br></br> <b>Postal code:</b> {cart.shipping.postalCode} <br></br> <b>Country:</b> {cart.shipping.country}</div>
@@ -72,23 +72,23 @@ function PlaceOrder(props) {
 
                         :
                         cartItems.map(item => <div className="row test" key={shipping}>
-                            <div className="col">
+                            <div className="col-lg-2">
                                 <Link to={"/products/" + item.product}>{item.name}</Link>
  
                             </div>
-                            <div className="col"><img width='150px' src={item.image} /></div>
+                            <div className="col-lg-2"><img width='150px' src={item.image} /></div>
 
-                            <div className="col"> Qty: {item.qty}
+                            <div className="col-lg-4"> Qty: {item.qty}
                             </div>
                             <div>price</div>
-                            <div className="col">€ {item.price}</div>
+                            <div className="col-lg-6">€ {item.price}</div>
                         </div>
                         )
                     }
 
 
                 </div>
-                <div className="placeorder-action">
+                <div className="col">
                     <div>
                         <div>
                             <button className="btn btn-primary" onClick={placeOrderHandler}>Place Order</button>
