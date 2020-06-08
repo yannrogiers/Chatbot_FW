@@ -23,4 +23,5 @@
 .bot{
     float: right;
     text-align: left;
+    visibility: show;
 }

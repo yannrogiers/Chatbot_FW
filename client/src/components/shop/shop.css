@@ -25,6 +25,7 @@
 .form-check-input{
     opacity: 100% !important;
     pointer-events: all !important;
+    visibility: show;
 }
 
 .container{
