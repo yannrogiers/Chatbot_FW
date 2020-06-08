@@ -34,7 +34,7 @@ function CartComponent(props) {
 
 
     return (
-        <div className="">
+        <div>
             <div className="row">
                 <div className="col-sm-8">
                     <h4>Shopping Cart</h4>
@@ -43,12 +43,12 @@ function CartComponent(props) {
                     <h4>Price</h4>
                 </div>
             </div>
-            <div className="">
+            <div>
                 {cartItems.length === 0 ?
                     <div>Cart is empty</div>
 
                     :
-                    cartItems.map(item => <div className="row test" key={qty}>
+                    cartItems.map(item => <div className="row test" key={item.price}>
                         <div className="col"><img src={item.image} width='150px' style={{marginRight: '5%'}} /></div>
                         <div className="col-2"> 
                         <Link to={"/products/" + item.product}>{item.name}</Link>

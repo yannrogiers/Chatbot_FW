@@ -243,16 +243,16 @@ class Chatbot extends Component {
     render() {
         if (this.state.showBot) {
             return (
-                <div className="chtbot" style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'sticky', bottom: 0, left: '100%', border: '1px solid lightgrey' }}>
+                <div className="chtbot" style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'sticky', bottom: 0, float: 'right', border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
                         <div className="">
                             <a className="link-chatbot" href="" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</a>
-                            <ul id="nav-mobile" className="bot">
-                                <li><a  className="close" onClick={this.hide}>Close</a></li>
+                            <ul id="" className="bot">
+                                <li><a style={{opacity: '100% !important'}}  className="close" onClick={this.hide}>Close</a></li>
                             </ul>
                         </div>
                     </nav>
-                    <div id="chatbot" style={{ minHeight: 348, maxHeight: 348, width: '100%', overflow: 'auto' }}>
+                    <div id="chatbot" style={{ minHeight: 348, maxHeight: 348, width: '100%', overflow: 'auto', margin: '0 !important' }}>
                         {this.renderMessages(this.state.messages)}
                         <div ref={(el) => { this.messagesEnd = el; }}
                             style={{ float: 'left', clear: 'both' }}>
@@ -267,7 +267,7 @@ class Chatbot extends Component {
             )
         } else {
             return (
-                <div style={{ minHeight: 40, maxHeight: 500, width: 400, maxWidth: 400, position: 'sticky', bottom: 0, left: '100%', border: '1px solid lightgrey' }}>
+                <div style={{ minHeight: 40, maxHeight: 500, width: 400, maxWidth: 400, position: 'sticky', bottom: 0, float: 'right', border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
                         <div className="">
                             <a className="botTitle" style={{ marginLeft: '5%' }}>Security at Home</a>

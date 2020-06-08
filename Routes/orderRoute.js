@@ -8,10 +8,10 @@ router.get("/", isAuth, async(req, res) => {
   res.send(orders)
 })
 
-router.get("/mine", isAuth, async(req, res) => {
-  const orders = await Order.find({user: req.user._id})
-  res.send(orders)
-})
+router.get("/myorders", isAuth, async (req, res) => {
+  const orders = await Order.find({ user: req.user._id });
+  res.send(orders);
+});
 
 router.delete('/:id', isAuth,  isAdmin, async(req,res) => {
   const order = await Order.findOne({_id: req.params.id});

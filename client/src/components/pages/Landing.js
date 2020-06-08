@@ -104,16 +104,6 @@ export default class Landing extends Component {
                         <div className="bg-light box-shadow mx-auto"></div>
                     </div>
                 </div>
-
-                <div className="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-
-
-                </div>
-
-                <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-
-
-                </div>
             </div>
 
 

@@ -75,13 +75,7 @@ function Shop(props) {
                         <button type="submit" className="btn btn-primary">Search</button>
                     </form>
                 </div>
-                <div className="col">
-                    <select className="sort" name='sortOrder' onChange={sortHandler}>
-                        <option value=''>newest</option>
-                        <option value=''>highest</option>
-                        <option value=''>lowest</option>
-                    </select>
-                </div>
+               
             </div>
 
 
@@ -94,13 +88,13 @@ function Shop(props) {
 
                                     {
                                         products.map(product =>
-                                            <div className="col-2" >
+                                            <div key={product._id} className="col-lg-2 col-xs-12 col-md-3 col-sm-8" >
                                                 <div className="product">
 
                                                     <div className="product name">
                                                         <Link to={'/products/' + product._id}>
 
-                                                            <img className="img-fluid" src={product.image} style={{ marginTop: 30 }} width="800px" />
+                                                            <img className="img-fluid" src={product.image} style={{ marginTop: 30 }} />
                                                             {product.name}
                                                         </Link>
                                                     </div>
