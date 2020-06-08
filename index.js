@@ -14,13 +14,15 @@ const mongoose = require('mongoose');
 app.use(express.json());
 app.use(bodyParser.json());
 
-//Mongoose connection
-mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-
 //Api calls
 app.use('/api/users', userRoute)
 app.use('/api/orders', orderRoute)
 app.use('/api/products', productRoute)
+
+//Mongoose connection
+mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
+
 app.get('/api/config/paypal', (req, res) => {
     res.send(config.PAYPAL_CLIENT_ID)
 })
