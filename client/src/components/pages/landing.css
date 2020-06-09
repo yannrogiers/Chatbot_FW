@@ -41,3 +41,32 @@
   font-weight: 400 !important;
   font-size: 1.25rem;
 }
+
+
+@media (min-width: 768px){
+  .position-relative.overflow-hidden.p-3.p-md-5.m-md-3.text-center.bg-light.fix {
+    margin: 0 !important;
+}
+}
+
+@media (min-width: 768px){
+  .d-md-flex.flex-md-equal.w-100.my-md-3.pl-md-3 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+}
+
+@media (min-width: 768px){
+  .bg-dark.mr-md-3.pt-3.px-3.pt-md-5.px-md-5.text-center.text-white.overflow-hidden.half {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+}
+
+@media (min-width: 768px){
+  .bg-light.mr-md-3.pt-3.px-3.pt-md-5.px-md-5.text-center.overflow-hidden.half{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+}
+

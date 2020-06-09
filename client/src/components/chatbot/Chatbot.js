@@ -243,7 +243,7 @@ class Chatbot extends Component {
     render() {
         if (this.state.showBot) {
             return (
-                <div className="chtbot" style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'sticky', bottom: 0, float: 'right', border: '1px solid lightgrey' }}>
+                <div className="chtbot" style={{ minHeight: 470, maxHeight: 440, width: 400, position: 'fixed', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
                         <div className="">
                             <p className="link-chatbot" href="" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</p>
@@ -267,7 +267,7 @@ class Chatbot extends Component {
             )
         } else {
             return (
-                <div style={{ minHeight: 40, maxHeight: 500, width: 400, maxWidth: 400, position: 'sticky', bottom: 0, float: 'right', border: '1px solid lightgrey' }}>
+                <div style={{ minHeight: 40, maxHeight: 500, width: 400, maxWidth: 400, position: 'fixed', bottom: 0, right: 0, border: '1px solid lightgrey' }}>
                     <nav className="chatbot-nav-color">
                         <div className="">
                             <p className="botTitle" style={{ marginLeft: '5%' }}>Security at Home</p>

@@ -23,7 +23,7 @@
 }
 
 .form-check-input{
-    opacity: 100% !important;
+    opacity: 1 !important;
     pointer-events: all !important;
     visibility: show;
 }

@@ -15,7 +15,8 @@ import { Carousel } from 'react-bootstrap'
 let topSecitonStyle = {
     backgroundImage: `url(${SH_3})`,
     backgroundSize: `cover`,
-    opacity: `90%`
+    opacity: `90%`,
+    margin: `0`
 }
 
 let leftCenterSectionStyle = {
@@ -57,7 +58,7 @@ export default class Landing extends Component {
         return (
             <div>
 
-                <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" style={topSecitonStyle}>
+                <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light fix" style={topSecitonStyle}>
                     <div className="col-md-5 p-lg-5 mx-auto my-5" >
                         <h1 className="display-4 font-weight-normal text">High end systems</h1>
                         <p className="lead font-weight-normal text">Check out our high end security systems!</p>
