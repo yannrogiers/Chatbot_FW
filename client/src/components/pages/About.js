@@ -10,7 +10,7 @@ let topSecitonStyle = {
 
 const About = () =>
     (
-        <div class="container-fluid">
+        <div class="container-fluid center-text">
             <div class="row">
                 <div class="col-md-12">
                     <h2>Welcome to Security at Home</h2>
@@ -39,24 +39,23 @@ const About = () =>
                     <div className="bg-dark box-shadow mx-auto" ></div>
                 </div>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-
-            <h4>SOME NUMBERS...</h4>
-            <div class="row bckgr">
-                <div class="col-md-3">
-                    <p>On average, a burglary happens once every 26 seconds.</p>
-                </div>
-                <div class="col-md-3">
-                    <p>The average loss from a burglary is $2,799.</p>
-                </div>
-                <div class="col-md-3">
-                    <p>People worry about burglary more than any other property crime.</p>
-                </div>
-                <div class="col-md-3">
-                    <p>Burglaries are more frequent during the summer months.</p>
+        
+            <div className="background-about">
+                <h4>SOME NUMBERS...</h4>
+                <br></br>
+                <div class="row bckgr">
+                    <div class="col-md-3">
+                        <p>On average, a burglary happens once every 26 seconds.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>The average loss from a burglary is $2,799.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>People worry about burglary more than any other property crime.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>Burglaries are more frequent during the summer months.</p>
+                    </div>
                 </div>
             </div>
 

@@ -248,7 +248,7 @@ class Chatbot extends Component {
                         <div className="">
                             <p className="link-chatbot" href="" className="brand-logo" style={{ marginLeft: '5%' }}>Security at Home</p>
                             <ul id="" className="bot">
-                                <li><a style={{opacity: '100% !important'}}  className="close" onClick={this.hide}>Close</a></li>
+                                <li><a  className="close" onClick={this.hide}>Close</a></li>
                             </ul>
                         </div>
                     </nav>

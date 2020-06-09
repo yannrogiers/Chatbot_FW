@@ -16,7 +16,7 @@ function Shop(props) {
 
     useEffect(() => {
         dispatch(listProducts(category));
-        console.log(productList)
+        
         return () => {
             //
         }
@@ -33,7 +33,7 @@ function Shop(props) {
         dispatch(listProducts(category, searchKeyword, sortOrder))
     }
 
-    console.log(products)
+   
 
     return (
         <div>

@@ -97,19 +97,19 @@ function PlaceOrder(props) {
                             <h4>Order summary</h4>
                         </div>
                         <div>
-                            <div>Items</div>
+                            <div><b>Items</b></div>
                             <div>€{itemsPrice}</div>
                         </div>
                         <div>
-                            <div>Shipping</div>
+                            <div><b>Shipping</b></div>
                             <div>€{shippingPrice}</div>
                         </div>
                         <div>
-                            <div>Tax</div>
+                            <div><b>Tax</b></div>
                             <div>€{taxPrice}</div>
                         </div>
                         <div>
-                            <div>Total</div>
+                            <div><b>Total</b></div>
                             <div>€{totalPrice}</div>
                         </div>
                     </div>
