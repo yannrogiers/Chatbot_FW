@@ -8,7 +8,7 @@ const Message = (props) => {
             <div className="card-panel grey lighten-5 z-depth-1">
                 <div className="row valign-wrapper">
                     {props.speaks === 'bot' &&
-                        <div className="col-2">
+                        <div className="col-4">
                             <a href="/" className="btn-floating btn-large waves-effect waves-light red">{props.speaks}</a>
                         </div>
                     }

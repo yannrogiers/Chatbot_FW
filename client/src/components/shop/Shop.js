@@ -40,7 +40,7 @@ function Shop(props) {
             {category &&
                 <h4>{category}</h4>}
             <div className="container breed">
-                <div className="row test">
+                <div className="row alignment">
                     <div className="row cat">Categories:</div>
 
                     <div className="row catprod">
@@ -63,6 +63,9 @@ function Shop(props) {
                         <Link to="/category/Medical Alarm">Medical Alarm</Link>
                     </div>
 
+                    <div className="row catprod">
+                        <Link to="/category/Motion Sensors">Motion Sensors</Link>
+                    </div>
                     <div className="row catprod">
                         <Link to="/category/Motion Sensors">Motion Sensors</Link>
                     </div>

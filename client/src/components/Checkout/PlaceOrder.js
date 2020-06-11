@@ -50,70 +50,73 @@ function PlaceOrder(props) {
         <div>
             <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
             <div className="container-fluid">
-                <div className="col">
-                    <div>
-                        <h4>Shipping</h4>
-                        <div><b>Street and number:</b> {cart.shipping.address}<br></br><b>City:</b>  {cart.shipping.city} <br></br> <b>Postal code:</b> {cart.shipping.postalCode} <br></br> <b>Country:</b> {cart.shipping.country}</div>
-                    </div>
-                    <div>
-                        <h4>Payment</h4>
+                <div className="row">
+                    <div className="col-md-6">
                         <div>
-                            <b>Payment method:</b> {cart.payment.paymentMethod}
+                            <h4>Shipping</h4>
+                            <div><b>Street and number:</b> {cart.shipping.address}<br></br><b>City:</b>  {cart.shipping.city} <br></br> <b>Postal code:</b> {cart.shipping.postalCode} <br></br> <b>Country:</b> {cart.shipping.country}</div>
                         </div>
-                    </div>
-                    <div>
-
-                    </div>
-
-                    <h4>Shopping Cart</h4>
-
-                    {cartItems.length === 0 ?
-                        <div>Cart is empty</div>
-
-                        :
-                        cartItems.map(item => <div className="row test" key={shipping}>
-                            <div className="col-lg-2">
-                                <Link to={"/products/" + item.product}>{item.name}</Link>
- 
+                        <div>
+                            <h4>Payment</h4>
+                            <div>
+                                <b>Payment method:</b> {cart.payment.paymentMethod}
                             </div>
-                            <div className="col-lg-2"><img width='150px' src={item.image} /></div>
+                        </div>
+                        <div>
 
-                            <div className="col-lg-4"> Qty: {item.qty}
+                        </div>
+
+                        <h4>Shopping Cart</h4>
+
+                        {cartItems.length === 0 ?
+                            <div>Cart is empty</div>
+
+                            :
+                            cartItems.map(item => <div className="test" key={shipping}>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <Link to={"/products/" + item.product}>{item.name}</Link>
+                                        <img width='150px' src={item.image} />
+                                    </div>
+                                    <div class="col-md-7">
+                                       <b> Quantity:</b> {item.qty}
+                                        <div><b>price:</b> €{item.price}</div>
+                                    
+                                    </div>
+                                </div>
                             </div>
-                            <div>price</div>
-                            <div className="col-lg-6">€ {item.price}</div>
-                        </div>
-                        )
-                    }
+                            )
+                        }
 
 
-                </div>
-                <div className="col">
-                    <div>
-                        <div>
-                            <button className="btn btn-primary" onClick={placeOrderHandler}>Place Order</button>
-                        </div>
-                        <div>
-                            <h4>Order summary</h4>
-                        </div>
-                        <div>
-                            <div><b>Items</b></div>
-                            <div>€{itemsPrice}</div>
-                        </div>
-                        <div>
-                            <div><b>Shipping</b></div>
-                            <div>€{shippingPrice}</div>
-                        </div>
-                        <div>
-                            <div><b>Tax</b></div>
-                            <div>€{taxPrice}</div>
-                        </div>
-                        <div>
-                            <div><b>Total</b></div>
-                            <div>€{totalPrice}</div>
-                        </div>
                     </div>
+                    <div className="col-md-6">
+                        <div>
+                            <div>
+                                <button className="btn btn-primary" onClick={placeOrderHandler}>Place Order</button>
+                            </div>
+                            <div>
+                                <h4>Order summary</h4>
+                            </div>
+                            <div>
+                                <div><b>Items</b></div>
+                                <div>€{itemsPrice}</div>
+                            </div>
+                            <div>
+                                <div><b>Shipping</b></div>
+                                <div>€{shippingPrice}</div>
+                            </div>
+                            <div>
+                                <div><b>Tax</b></div>
+                                <div>€{taxPrice}</div>
+                            </div>
+                            <div>
+                                <div><b>Total</b></div>
+                                <div>€{totalPrice}</div>
+                            </div>
+                        </div>
 
+                    </div>
                 </div>
 
             </div>

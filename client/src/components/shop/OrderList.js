@@ -56,7 +56,7 @@ function OrderList(props) {
                                 <td>{order._id}</td>
                                 <td>{order.createdAt}</td>
                                 <td>{order.totalPrice}</td>
-                                <td>{order.user.name}</td>
+                                <td>{order.user.first_name}</td>
                                 <td>{order.isPaid.toString()}</td>
                                 <td>{order.paidAt}</td>
                                 <td>{order.isDelivered.toString()}</td>
