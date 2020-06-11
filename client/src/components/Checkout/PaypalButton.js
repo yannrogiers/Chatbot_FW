@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 
 function PaypalButton(props) {
 
+    /* https://developer.paypal.com/docs/api/orders/v2/ */
+    /* https://stackoverflow.com/questions/60541052/resource-not-found-in-paypal */
     const [sdkReady, setSdkReady] = useState(false)
 
     const addPaypalSdk = async () => {

@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 import './shop.css'
 
 function CartComponent(props) {
-
+    /*https://react-redux.js.org/api/hooks*/
+    /*Allows you to extract data from the Redux store state, using a selector function.*/ 
     const cart = useSelector(state => state.cart);
     const { cartItems } = cart;
     const productId = props.match.params.id;
@@ -18,7 +19,7 @@ function CartComponent(props) {
     const removeFromCartHandler = (productId) => {
         dispatch(removeFromCart(productId));
     }
-
+    //Product toevoegen aan winkelwagen
     useEffect(() => {
         if (productId) {
             dispatch(addToCart(productId, qty));
@@ -28,11 +29,12 @@ function CartComponent(props) {
         }
     }, [])
 
+    //Wanneer je op checkout klikt wordt je doorgestuurd naar shipping
     const checkoutHandler = () => {
         props.history.push('/signin?redirect=shipping')
     }
 
-
+    //Html
     return (
         <div>
             <div className="row">

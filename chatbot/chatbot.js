@@ -8,6 +8,8 @@ const projectID = config.googleProjectID;
 const sessionID = config.dialogFlowSessionID;
 const languageCode = config.dialogFlowSessionLanguageCode;
 
+
+//Credentials van google
 const credentials = {
     client_email: config.googleClientEmail,
     private_key: config.googlePrivateKey
@@ -16,13 +18,13 @@ const credentials = {
 //Instantiate a DialogFlow client.
 const sessionClient = new dialogflow.SessionsClient({ projectID, credentials });
 
-//Define session path
-//const sessionPath = sessionClient.sessionPath(config.googleProjectID, config.dialogFlowSessionID);
-
+//Nieuw model voor registration in de database
 const Registration = mongoose.model('registration');
 
 
 module.exports = {
+    //Antwoord voor textquery
+    /* https://cloud.google.com/dialogflow/docs/reference/rest/v2beta1/DetectIntentResponse */
     textQuery: async function (text, userID, parameters = {}) {
         let sessionPath = sessionClient.sessionPath(projectID, sessionID + userID);
         let self = module.exports;
@@ -40,12 +42,12 @@ module.exports = {
                 }
             }
         };
-
+        //Bepaal intent voo response te senden
         let responses = await sessionClient.detectIntent(request)
         responses = await self.handleAction(responses)
         return responses;
     },
-
+    //Antwoord voor event query
     eventQuery: async function (event, userID, parameters = {}) {
         let sessionPath = sessionClient.sessionPath(projectID, sessionID + userID);
         let self = module.exports;
@@ -65,6 +67,7 @@ module.exports = {
         return responses;
     },
 
+    //actie die wordt uitgevoerd wanneer op Yes wordt geduwd bij recommend
     handleAction: function (responses) {
         let self = module.exports;
         let queryResult = responses[0].queryResult;
@@ -79,6 +82,8 @@ module.exports = {
 
         return responses;
     },
+
+    //Nieuwe info verkregen van user in database zetten
     saveRegistration: async function (fields) {
         const registration = new Registration({
             name: fields.name.stringValue,

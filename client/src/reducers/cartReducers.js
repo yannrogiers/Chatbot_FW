@@ -1,5 +1,8 @@
 import { ADD_ITEM_TO_CART, CART_REMOVE_ITEM, CART_SAVE_SHIPPING, CART_SAVE_PAYMENT } from "../constants/cartConstants";
 
+/*https://redux.js.org/basics/reducers*/
+/*Reducers specify how the application's state changes in response to actions sent to the store. 
+Remember that actions only describe what happened, but don't describe how the application's state changes.*/
 function cartReducer(state = { cartItems: [], shipping:{}, payment:{} }, action) {
     switch (action.type) {
         case ADD_ITEM_TO_CART:

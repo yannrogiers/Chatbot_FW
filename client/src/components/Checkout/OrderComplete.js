@@ -13,6 +13,7 @@ function Order(props) {
     const dispatch = useDispatch();
     useEffect(() => {
         if (successPay) {
+            //Wanneer de betaling voltooid is user naar profile pagina doorsturen
             props.history.push('/profile')
         } else {
             dispatch(detailsOrder(props.match.params.id));
@@ -20,16 +21,19 @@ function Order(props) {
 
         return () => {
         }
+        //Gebeurt enkel wanneer betaling succesvol is
     }, [successPay])
 
     const handleSuccessPayment = (paymentResult) => {
         dispatch(payOrder(order, paymentResult))
     }
 
+    //Details van order ophalen
     const orderDetails = useSelector(state => state.orderDetails);
     const { loading, order, error } = orderDetails;
 
 
+    //opbouw html
     return (
         loading ? <div className="">Loading...</div> : error ? <div className="">{error}</div> :
 

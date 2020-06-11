@@ -40,12 +40,13 @@ function PlaceOrder(props) {
 
     useEffect(() => {
         if (success) {
+            //Wanneer het order succesvol geplaatst is wordt je doorgestuurd naar de pagina met een gedetailleerde weergave van het order
             props.history.push("/order/" + order._id);
         }
 
     }, [success]);
 
-
+    //Opbouw html
     return (
         <div>
             <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>

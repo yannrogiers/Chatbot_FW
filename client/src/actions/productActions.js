@@ -2,6 +2,7 @@ import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_
 import axios from 'axios'
 import Axios from "axios";
 
+//Lijst van producten + mogelijkheid tot filteren op zoektermen of categorie
 const listProducts = (category ='', searchKeyword='', sortOrder='') => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST });
@@ -15,6 +16,8 @@ const listProducts = (category ='', searchKeyword='', sortOrder='') => async (di
 
 }
 
+
+//Product toevoegen of bewerken aan of in de database als admin
 const saveProduct = (product) => async (dispatch, getState) => {
     try {
         dispatch({ type: PRODUCT_SAVE_REQUEST, payload: product });
@@ -41,6 +44,7 @@ const saveProduct = (product) => async (dispatch, getState) => {
     }
 }
 
+//De details van een product opvragen
 const detailsProduct = (productId) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
@@ -52,6 +56,7 @@ const detailsProduct = (productId) => async (dispatch) => {
     }
 }
 
+//Een product uit de database verwijderen als admin
 const deleteProduct = (productId) => async (dispatch, getState) => {
     try {
         const {userSignin : {userInfo}} = getState();

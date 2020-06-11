@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
+//Schema voor database, via chatbot
 const registrationSchema = new Schema({
     name: String,
     address: String,

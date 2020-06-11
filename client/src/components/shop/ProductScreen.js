@@ -18,10 +18,11 @@ function ProductScreen(props) {
         }
     }, []);
 
+    //Toevoegen aan winkelmandje
     const handleAddToCart = () => {
         props.history.push('/cart/' + props.match.params.id + "?qty=" + qty)
     }
-
+    //html
     return <div>
         <div className="back">
             <Link to="/shop">Back to results</Link>

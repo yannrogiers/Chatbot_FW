@@ -2,6 +2,8 @@ import React from 'react'
 import './checkout.css'
 
 function CheckoutSteps(props) {
+
+    //Het renderen van de stappen tijdens het checkoutproces
     return (
         
         <div className="checkoutStep">

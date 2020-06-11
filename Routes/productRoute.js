@@ -4,6 +4,7 @@ const Product = require('../models/productModel');
 const { isAdmin, isAuth } = require('../util');
 
 
+/*https://expressjs.com/en/guide/routing.html*/
 
 router.get('/searchProducts', async (req, res) => {
     const category = req.query.category ? { category: req.query.category } : {};
@@ -25,7 +26,7 @@ router.get("/:id", async (req, res) => {
     if (product) {
         res.send(product);
     } else {
-        res.status(404).send({ message: "Product Not Found." });
+        res.status(404).send({ message: "Product was not found." });
     }
 });
 
@@ -43,7 +44,7 @@ router.put('/:id', isAuth, isAdmin, async (req, res) => {
         product.description = req.body.description;
         const updatedProduct = await product.save();
         if (updatedProduct) {
-            return res.status(200).send({ message: 'Product updated', data: updatedProduct })
+            return res.status(200).send({ message: 'Product has been updated', data: updatedProduct })
         }
     }
     return res.status(500).send({ message: 'Error while updating product' })

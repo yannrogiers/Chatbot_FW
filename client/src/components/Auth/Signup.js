@@ -7,6 +7,7 @@ import { register } from '../../actions/userActions';
 
 function Register(props) {
 
+    //Zelfde logica als in de signIn file.
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');

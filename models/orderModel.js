@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
+
+//schema's voor database
 const shippingSchema = {
     address: { type: String, required: true },
     city: { type: String, required: true },

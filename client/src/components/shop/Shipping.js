@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './shipping.css'
 import { saveShipping } from '../../actions/cartActions';
 import CheckoutSteps from "../Checkout/CheckoutSteps";
@@ -8,6 +7,7 @@ import CheckoutSteps from "../Checkout/CheckoutSteps";
 
 function Shipping(props) {
 
+    //Zelfde logica als login/register/update
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [postalCode, setPostal] = useState('');
@@ -15,13 +15,13 @@ function Shipping(props) {
     const dispatch = useDispatch();
 
 
-
+    //Alle gegevens worden meegestuurd wanneer je op next/submit klikt
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(saveShipping({ address, city, postalCode, country }));
         props.history.push('/payment')
     }
-
+    //html
     return (
         <div>
             <CheckoutSteps step1 step2></CheckoutSteps>

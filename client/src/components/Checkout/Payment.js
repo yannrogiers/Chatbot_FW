@@ -15,6 +15,7 @@ function Payment(props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        //Doorsturen naar placeorder screen van zodra de betaalmethode gekozen is.
         dispatch(savePayment({paymentMethod}));
         props.history.push('/placeorder')
     }

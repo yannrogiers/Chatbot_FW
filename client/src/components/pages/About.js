@@ -7,7 +7,7 @@ let topSecitonStyle = {
     backgroundSize: `cover`,
     opacity: `90%`
 }
-
+//About page met inline styling
 const About = () =>
     (
         <div class="container-fluid center-text">

@@ -8,10 +8,6 @@ const Item = mongoose.model('item')
 module.exports = app => {
     app.post('/', async (req, res) => {
         const agent = new WebhookClient({request: req, response: res})
-
-            function snoopy(agent){
-            agent.add(`Welcome to an intent`);
-        }
       
         
        async function SSystems(agent){

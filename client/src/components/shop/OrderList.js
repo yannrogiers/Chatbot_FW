@@ -21,6 +21,7 @@ function OrderList(props) {
         return () => {
             //
         }
+        //Lijst wordt gerefresht wanneer er een order verwijderd wordt
     }, [successDelete]);
 
     const deleteHandler = (order) => {
@@ -29,6 +30,7 @@ function OrderList(props) {
     }
     console.log(orders)
 
+    //HTML
     return (
         loading ? <div>Loading...</div> :
         <div className="content content-margined">
@@ -40,15 +42,15 @@ function OrderList(props) {
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>DATE</th>
-                            <th>TOTAL</th>
-                            <th>USER</th>
-                            <th>PAID</th>
-                            <th>PAID AT</th>
-                            <th>DELIVERED</th>
-                            <th>DELIVERED AT</th>
-                            <th>ACTIONS</th>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                            <th>User</th>
+                            <th>Paid</th>
+                            <th>Paid at</th>
+                            <th>Delivered</th>
+                            <th>Delivered at</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

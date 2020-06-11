@@ -53,7 +53,7 @@ export default class Landing extends Component {
     }
 
     
-
+    //Homepage met deels inline styling
     render() {
         return (
             <div>

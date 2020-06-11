@@ -6,6 +6,8 @@ import { saveProduct, listProducts, deleteProduct } from '../../actions/productA
 
 function ProductUpload(props) {
 
+
+    //Productupload logica hetzelfde als register/login/edit
     const [modalVisible, setModalVisible] = useState(false);
     const [id, setId] = useState('');
     const [name, setName] = useState('');
@@ -17,6 +19,7 @@ function ProductUpload(props) {
     const [description, setDescription] = useState('');
     const productList = useSelector(state => state.productList);
     const { loading, products, error } = productList;
+
     //Save
     const productSave = useSelector(state => state.productSave);
     const { loading: loadingSave, success: successSave, error: errorSave } = productSave;
@@ -38,6 +41,8 @@ function ProductUpload(props) {
         }
     }, [successSave, successDelete]);
 
+
+    /* https://alligator.io/react/modal-component/ */
     const openModal = (product) => {
         setModalVisible(true);
         setId(product._id);
@@ -107,7 +112,7 @@ function ProductUpload(props) {
                 </div>
             }
 
-            <div className="product-list">
+            <div>
                 <table>
                     <thead>
                         <tr>

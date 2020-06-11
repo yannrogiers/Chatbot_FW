@@ -13,7 +13,7 @@ function Header() {
     const userSignin = useSelector(state => state.userSignin);
     const { userInfo } = userSignin;
 
-
+    //navigatie
     return (
         <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
             <Link to={'/'} className="navbar-brand" style={{ top: "0.1%", paddingLeft: '1%' }}><img className="logo" src={image} alt={image} width="150px" />

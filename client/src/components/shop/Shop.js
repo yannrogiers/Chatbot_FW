@@ -7,6 +7,7 @@ import { listProducts } from '../../actions/productActions'
 
 function Shop(props) {
 
+    //Zelfde logica als login/register/update/...
     const [searchKeyword, setSearchKeyword] = useState('')
     const [sortOrder, setSortOrder] = useState('')
     const category = props.match.params.id ? props.match.params.id : '';
@@ -19,22 +20,17 @@ function Shop(props) {
         
         return () => {
             //
-        }
+        }//Items worden geupdate wanneer je een categorie selecteert
     }, [category])
 
-
+    //Zoekfunctie
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(listProducts(category, searchKeyword, sortOrder))
     }
 
-    const sortHandler = (e) => {
-        setSortOrder(e.target.value);
-        dispatch(listProducts(category, searchKeyword, sortOrder))
-    }
-
    
-
+    //html
     return (
         <div>
             {category &&

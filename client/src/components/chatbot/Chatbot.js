@@ -47,7 +47,7 @@ class Chatbot extends Component {
         console.log(cookies.get('userID'));
     }
 
-    async df_text_query(text) {
+    async query_text(text) {
         let says = {
             speaks: 'user',
             msg: {
@@ -59,7 +59,8 @@ class Chatbot extends Component {
         //New state will be set, messages will become a new array that contains old messages with new messages
         this.setState({ messages: [...this.state.messages, says] });
         try {
-            const res = await axios.post('/api/df_text_query', { text, userID: cookies.get('userID') });
+            //Text query terugsturen
+            const res = await axios.post('/api/query_text', { text, userID: cookies.get('userID') });
             for (let msg of res.data.fulfillmentMessages) {
                 //    console.log(JSON.stringify(msg))
                 says = {
@@ -69,6 +70,7 @@ class Chatbot extends Component {
                 this.setState({ messages: [...this.state.messages, says] });
             }
         } catch (e) {
+            //error handling
             says = {
                 speaks: 'bot',
                 msg: {
@@ -86,9 +88,10 @@ class Chatbot extends Component {
 
     };
 
-    async df_event_query(event) {
+    async query_event(event) {
         try {
-            const res = await axios.post('/api/df_event_query', { event, userID: cookies.get('userID') });
+            //event wordt uitgevoerd
+            const res = await axios.post('/api/query_event', { event, userID: cookies.get('userID') });
 
             for (let msg of res.data.fulfillmentMessages) {
                 let says = {
@@ -99,6 +102,7 @@ class Chatbot extends Component {
             }
 
         } catch (e) {
+            //Error handling
             let says = {
                 speaks: 'bot',
                 msg: {
@@ -125,12 +129,14 @@ class Chatbot extends Component {
     }
 
     async componentDidMount() {
-        this.df_event_query('Welcome');
+        //Welkom intent wanneer chatbot succesvol is ingeladen
+        this.query_event('Welcome');
 
 
         if (window.location.pathname === '/shop' && !this.state.shopWelcomeSent) {
+            //Wanneer je binnenkomt op shop de welcome shop intent gebruiken
             await this.resolveAfterXSecondes(2);
-            this.df_event_query('WELCOME_SHOP');
+            this.query_event('WELCOME_SHOP');
             this.setState({ shopWelcomeSent: true, showBot: true });
         }
 
@@ -139,7 +145,7 @@ class Chatbot extends Component {
             //navigatie naar shop volgen zodat chatbot een spceciale message sent related voor shop & checken of shop nog
             //niet eerder bezocht is.
             if (this.props.history.location.pathname === "/shop" && !this.state.shopWelcomeSent) {
-                this.df_event_query('WELCOME_SHOP');
+                this.query_event('WELCOME_SHOP');
                 this.setState({ shopWelcomeSent: true, showBot: true });
             }
         });
@@ -147,6 +153,8 @@ class Chatbot extends Component {
 
 
     componentDidUpdate() {
+        //Volg textmessages in chat
+        //Autofocus toevoegen wanneer pagina ingeladen wordt
         this.messagesEnd.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
         if (this.talkInput) {
             this.talkInput.focus();
@@ -156,6 +164,7 @@ class Chatbot extends Component {
     show(event) {
         event.preventDefault();
         event.stopPropagation();
+        //Laat bot zien wanneer je op show klikt
         this.setState({ showBot: true });
 
     }
@@ -163,6 +172,7 @@ class Chatbot extends Component {
     hide(event) {
         event.preventDefault();
         event.stopPropagation();
+        //Laat bot verdwijnen wanneer je op close/hide drukt
         this.setState({ showBot: false });
     }
 
@@ -170,13 +180,15 @@ class Chatbot extends Component {
         event.preventDefault();
         event.stopPropagation();
 
+        //Toont recommendations van quick reply wanneer je op ja drukt in de shop
+
         switch (payload) {
             case 'recommend_yes':
-                this.df_event_query('SHOW_RECOMMENDATIONS');
+                this.query_event('SHOW_RECOMMENDATIONS');
                 break;
             
             default:
-                this.df_text_query(text);
+                this.query_text(text);
                 break;
         }
     }
@@ -196,7 +208,7 @@ class Chatbot extends Component {
             return <div key={i}>
                 <div className="card-panel grey lighten-5 z-depth-1">
                     <div style={{ overflow: 'hidden' }}>
-                        <a href="" className="btn-floating btn-large waves-effect waves-light red">{message.speaks}</a>
+                        <a href="" className="btn-floating btn-large waves-effect waves-light dark">bot</a>
                     </div>
                     <div style={{ overflow: 'auto', overflowY: 'scroll' }}>
                         <div style={{ height: 300 }}>
@@ -232,14 +244,14 @@ class Chatbot extends Component {
     }
     //Keys help react identify which items have been changed, added or removed
     //Keys worden gegeven aan elementen binnen array om de elementen een stabiele identiteit te geven.
-
+    //https://stackoverflow.com/questions/57642478/typeerror-cannot-read-property-fields-of-undefined-react-js
     _handleInputKeyPress(e) {
         if (e.key === 'Enter') {
-            this.df_text_query(e.target.value);
+            this.query_text(e.target.value);
             e.target.value = '';
         }
     }
-
+    //opbouw chatbot
     render() {
         if (this.state.showBot) {
             return (

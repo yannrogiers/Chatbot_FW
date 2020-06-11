@@ -7,11 +7,18 @@ import { signin } from '../../actions/userActions';
 
 function Signin(props) {
 
+    /*https://reactjs.org/docs/hooks-state.html*/
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const userSignin = useSelector(state => state.userSignin);
     const {loading, userInfo, error} = userSignin
+
+    /*https://react-redux.js.org/api/hooks*/
+    /*This hook returns a reference to the dispatch function from the Redux store. You may use it to dispatch actions as needed.*/
     const dispatch = useDispatch();
+
+    /*https://stackoverflow.com/questions/42862253/how-to-parse-query-string-in-react-router-v4*/
+    //Redirect de user naar deze link /register?redirect=/
     const redirect = props.location.search?props.location.search.split('=')[1]:'/';
 
     useEffect(() => {
@@ -23,6 +30,7 @@ function Signin(props) {
         return () => {
             //
         }
+        //de props.history.push gebeurt enkel wanneer de value van userInfo changed
     }, [userInfo]);
 
     const submitHandler = (e) => {
@@ -30,6 +38,7 @@ function Signin(props) {
         dispatch(signin(email, password));
     }
 
+    //Opbouw html
     return(
         <div className="form">
             <h4>Sign in</h4>

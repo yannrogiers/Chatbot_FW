@@ -2,7 +2,7 @@ import React from 'react';
 import './card.css'
 const Card = (props) => {
 
-
+//Card opbouw voor chatbot
     return (
         <div className="big-card"  style={{float: 'left', paddingRight:30, width:300}}>
             <div className="card">
@@ -12,7 +12,7 @@ const Card = (props) => {
                 </div>
                 <div className="card-content">
                     {props.payload.fields.description.stringValue}
-                    <p> <a  href="/">{props.payload.fields.price.stringValue}</a></p>
+                    <p> <a  href="#">{props.payload.fields.price.stringValue}</a></p>
                 </div>
                 <div className="card-action">
                     <a target="_blank"  rel="noopener noreferrer" href={props.payload.fields.link.stringValue}>VIEW IN SHOP</a>

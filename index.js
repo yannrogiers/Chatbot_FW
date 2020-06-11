@@ -16,8 +16,9 @@ app.use(bodyParser.json());
 
 //Api calls
 app.use('/api/users', userRoute)
-app.use('/api/orders', orderRoute)
 app.use('/api/products', productRoute)
+app.use('/api/orders', orderRoute)
+
 
 //Mongoose connection
 mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });

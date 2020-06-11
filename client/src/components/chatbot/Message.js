@@ -8,8 +8,8 @@ const Message = (props) => {
             <div className="card-panel grey lighten-5 z-depth-1">
                 <div className="row valign-wrapper">
                     {props.speaks === 'bot' &&
-                        <div className="col-4">
-                            <a href="/" className="btn-floating btn-large waves-effect waves-light red">{props.speaks}</a>
+                        <div className="col-3">
+                            <a href="/" className="btn-floating btn-large waves-effect waves-light dark">{props.speaks}</a>
                         </div>
                     }
                     <div className="col-8">
@@ -19,7 +19,7 @@ const Message = (props) => {
                     </div>
                     {props.speaks === 'user' &&
                         <div className="col-2">
-                            <a href="/" className="btn-floating btn-large waves-effect waves-light red">{props.speaks}</a>
+                            <a href="/" className="btn-floating btn-large waves-effect waves-light dark">{props.speaks}</a>
                         </div>
                     }
                 </div>
@@ -27,7 +27,7 @@ const Message = (props) => {
         </div>
         //How does this work?
         // In java script (if we have true & expression) it will always evaluate the expression therefore props.speak is true and the expression
-        //after it is returned & displayed
+        // after it is returned & displayed
         // expression = true && expression (JSX code)
     );
 };

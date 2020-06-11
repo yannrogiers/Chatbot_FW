@@ -4,8 +4,8 @@ const router = express.Router();
 const User = require('../models/userModel')
 const {isAuth, getToken}  = require('../util')
 
-
-
+/*https://expressjs.com/en/guide/routing.html*/
+//User toevoegen 
 router.put('/:id', isAuth, async (req, res) => {
     const userId = req.params.id;
     const user = await User.findById(userId);
@@ -29,29 +29,31 @@ router.put('/:id', isAuth, async (req, res) => {
   
   });
 
-
+//User inloggen
 router.post('/signin', async(req, res) => {
 
-    const signinUser = await User.findOne({
+    const signUserIn = await User.findOne({
         email: req.body.email,
         password: req.body.password
     });
-    if(signinUser){
+    if(signUserIn){
         res.send({
-            _id: signinUser.id,
-            first_name: signinUser.first_name,
-            last_name: signinUser.last_name,
-            email: signinUser.email,
-            isAdmin: signinUser.isAdmin,
-            token: getToken(signinUser)
+            _id: signUserIn.id,
+            first_name: signUserIn.first_name,
+            last_name: signUserIn.last_name,
+            email: signUserIn.email,
+            isAdmin: signUserIn.isAdmin,
+            token: getToken(signUserIn)
         });
-        console.log(signinUser)
+        console.log(signUserIn)
 
     }else{
         res.status(401).send({msg: 'Invalid email or password.'})
     }
 });
 
+
+//Use profile editten
 router.put('/:id', isAuth, async(req, res) => {
     const userId = req.params.id;
     const user = await User.findById(userId);
@@ -70,11 +72,13 @@ router.put('/:id', isAuth, async(req, res) => {
             token: getToken(updatedUser)
         });
     }else{
-        res.status(404).send({msg: 'User not found!'})
+        res.status(404).send({msg: 'The user was not found!'})
     }
   
 });
 
+
+//register new user
 router.post('/register', async(req, res) => {
     const user = new User({
         first_name: req.body.first_name,
@@ -98,6 +102,7 @@ router.post('/register', async(req, res) => {
 });
 
 
+//Maak admin account
 router.get('/createadmin', async (req, res) => {
     try {
         const user = new User({
